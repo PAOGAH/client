@@ -15,6 +15,7 @@ import { Provider } from 'react-redux'
 import Statistic from './views/Statistic'
 import Home from './views/Home'
 import store from './store/index'
+import History from './views/History'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -46,5 +47,5 @@ const styles = StyleSheet.create({
 export default createBottomTabNavigator({
   Parking: App,
   Stats: Statistic,
-  // history: <Text>hello from historyrr</Text>
+  History
 })

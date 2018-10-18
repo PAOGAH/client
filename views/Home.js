@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { connect } from 'react-redux'
 
 
@@ -19,16 +19,21 @@ class Home extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <FlatList 
           data={this.props.allPlatParking}
-          renderItem={({ item }) => <Text>{JSON.stringify(item)}</Text>}
+          renderItem={({ item }) => <Card data={item}/>}
         />
-        <Card/>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 15
+  }
+})
 
 const mapStateToProps = state => {
     return state
