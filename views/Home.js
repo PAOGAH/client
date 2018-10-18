@@ -22,7 +22,7 @@ class Home extends Component {
       <View style={styles.container}>
         <FlatList 
           data={this.props.allPlatParking}
-          renderItem={({ item }) => <Card data={item}/>}
+          renderItem={({ item }) => <Card data={item} {...this.props}/>}
         />
       </View>
     );

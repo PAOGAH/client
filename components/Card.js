@@ -9,14 +9,12 @@ class Card extends Component {
   }
 
   goToStack = (id) => {
-    return () => {
-        console.log(`tekan akoeh`)
-    }
+    this.props.navigation.navigate('Details', { data: this.props.data })
   }
 
   render() {
     return (
-        <TouchableHighlight onPress={this.goToStack(this.props.data.id)}>
+        <TouchableHighlight onPress={this.goToStack}>
             <View style={styles.card}>
                 <View>
                     <Text>{this.props.data.text}</Text>

@@ -8,14 +8,14 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import { ProgressCircle } from 'react-native-svg-charts'
-import { createBottomTabNavigator } from 'react-navigation'
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { Provider } from 'react-redux'
 
 import Statistic from './views/Statistic'
 import Home from './views/Home'
 import store from './store/index'
-import History from './views/History'
+import Historys from './views/History'
+import Detail from './views/Details'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -30,7 +30,7 @@ class App extends Component{
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <Home/>
+          <Home {...this.props}/>
         </View>
       </Provider>
     );
@@ -44,8 +44,24 @@ const styles = StyleSheet.create({
   }
 });
 
+const HomeStack = createStackNavigator({
+  Home: {
+    screen: App,
+    navigationOptions: {
+      title: 'INI TITLE',
+      headerStyle: {},
+      headerTitleStyle: {}
+    }
+  },
+  Details: Detail
+})
+const HistoryStack = createStackNavigator({
+  History: Historys,
+  Details: Detail
+})
+
 export default createBottomTabNavigator({
-  Parking: App,
+  Parking: HomeStack,
   Stats: Statistic,
-  History
+  History: HistoryStack
 })
