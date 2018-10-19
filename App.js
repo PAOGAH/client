@@ -1,31 +1,24 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
+import React from 'react';
+import { StyleSheet, Platform, Image, Text, View, ScrollView } from 'react-native';
+import firebase from 'react-native-firebase';
 import { Provider } from 'react-redux'
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 
-import Statistic from './views/Statistic'
+import store from './store'
 import Home from './views/Home'
-import store from './store/index'
-import Historys from './views/History'
-import Detail from './views/Details'
+import Detail from './views/Detail.js'
+import Statistic from './views/Statistic'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
 
+  componentDidMount() {
+    
+  }
 
-class App extends Component{
   render() {
     return (
       <Provider store={store}>
@@ -53,15 +46,10 @@ const HomeStack = createStackNavigator({
       headerTitleStyle: {}
     }
   },
-  Details: Detail
-})
-const HistoryStack = createStackNavigator({
-  History: Historys,
-  Details: Detail
+  Detail: Detail
 })
 
-export default createBottomTabNavigator({
+export default  createBottomTabNavigator({
   Parking: HomeStack,
-  Stats: Statistic,
-  History: HistoryStack
+  Stats: Statistic
 })

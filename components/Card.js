@@ -9,7 +9,7 @@ class Card extends Component {
   }
 
   goToStack = (id) => {
-    this.props.navigation.navigate('Details', { data: this.props.data })
+      this.props.navigation.navigate('Detail', { data: this.props.data })
   }
 
   render() {
@@ -20,14 +20,13 @@ class Card extends Component {
                     <Text>{this.props.data.text}</Text>
                 </View>
                 <View>
-                    <Text>{this.props.data.createdAt}</Text>
+                    <Text>{this.props.data.createdAt.split('').slice(0,15).join('')}</Text>
                 </View>
             </View>
         </TouchableHighlight>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
     card: {

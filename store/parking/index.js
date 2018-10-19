@@ -1,24 +1,23 @@
 let initialParking = {
-    allPlat: [],
-    allPlatParking: [],
+    allLisences: [],
+    allLisencesParking: [],
     totalVehicle: 0,
     totalEmpty: 50
 }
 
 function parking(state = initialParking, action) {
     switch (action.type) {
-        case 'GET_ALL_PLAT':
+        case 'GET_ALL_LISENCES':
             return {
                 ...state,
-                allPlat: action.payload.allPlat,
-                allPlatParking: action.payload.allPlatTrue,
-                totalEmpty: action.payload.totalSlotParking,
+                allLisences: action.payload.lisences,
+                allLisencesParking: action.payload.allLisencesParking,
+                totalEmpty: action.payload.totalEmpty,
                 totalVehicle: action.payload.totalVehicle
             }
         default:
             return state
     }
 }
-
 
 export default parking

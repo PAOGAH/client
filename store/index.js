@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk';
-import parking from './parking/'
+import thunk from 'redux-thunk'
+import parking from './parking'
 
 const store = createStore(
     parking,

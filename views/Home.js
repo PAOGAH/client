@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import React, { Component, Fragment } from 'react';
+import { View, Text, FlatList, StyleSheet, StatusBar } from 'react-native';
 import { connect } from 'react-redux'
-
 
 import getVehicle from '../store/parking/actions/getAllVehicle'
 import Card from '../components/Card'
@@ -14,15 +13,23 @@ class Home extends Component {
   }
 
   componentWillMount = () => {
-    this.props.getAllVehicle()
+      this.props.getAllVehicle()
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar hidden={true}/>
         <FlatList 
-          data={this.props.allPlatParking}
-          renderItem={({ item }) => <Card data={item} {...this.props}/>}
+            data={this.props.allLisencesParking}
+            keyExtractor={(index) => index.id}
+            renderItem={({ item }) => (
+                <Fragment>
+                    {
+                        item.status && <Card data={item} {...this.props}/>
+                    }
+                </Fragment>
+            )}
         />
       </View>
     );
@@ -30,9 +37,9 @@ class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    margin: 15
-  }
+    container: {
+        margin: 15
+    }
 })
 
 const mapStateToProps = state => {
