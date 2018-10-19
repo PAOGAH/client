@@ -41,7 +41,7 @@ const HomeStack = createStackNavigator({
   Home: {
     screen: App,
     navigationOptions: {
-      title: 'INI TITLE',
+      title: 'BUKAN TITLE',
       headerStyle: {},
       headerTitleStyle: {}
     }
