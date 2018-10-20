@@ -23,9 +23,9 @@ class Detail extends Component {
         <View style={styles.row}>
           <View style={styles.columnLeft}>
             <Text>Lisence Plate  : {data.text}</Text>
-            <Text>Check In Time : {data.createdAt.split('').slice(0,15).join('')}</Text>
+            <Text>CreatedAt : {data.createdAt.split('').slice(0,15).join('')}</Text>
             {
-              data.updatedAt? <Text>Check Out Time : {data.updatedAt}</Text> : <Text>Check Out Time : -</Text>
+              data.updatedAt? <Text>UpdateAt : {data.updatedAt.split('').slice(0,15).join('')}</Text> : <Text>Check Out Time : -</Text>
             }
           </View>
           <View style={styles.columnRight}>
