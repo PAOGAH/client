@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "firebase": "^5.0.3",
+    "native-base": "^2.8.1",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.3",
     "react-native-image-zoom-viewer": "^2.2.23",

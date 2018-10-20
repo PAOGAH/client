@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import { Platform, View } from 'react-native';
 import { Provider } from 'react-redux'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
-
+import { Container, Header, Content, Icon } from 'native-base';
 
 import './config'
 import store from './store'
@@ -66,6 +66,18 @@ const BottomNav = createBottomTabNavigator({
   Stats: Statistic,
   History: HistoryStack
 }, {
+  navigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      const { routeName } = navigation.state;
+      if (routeName === 'Parking') {
+        return <Icon name="apps" />
+      } else if (routeName === 'Stats') {
+        return <Icon ios='ios-menu' android="md-menu" style={{fontSize: 20, color: 'red'}}/>
+      } else if (routeName === 'History') {
+        return  <Icon type="FontAwesome" name="home" />
+      }
+    },
+  }),
   tabBarOptions: {
     activeTintColor: '#F1FAEE',
     inactiveTintColor: 'rgba(194, 202, 214, 0.3)',
