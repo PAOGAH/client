@@ -10,7 +10,6 @@ export class Histories extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <HistoryStack/>
         {/* <FlatList
           data={this.props.allLisences}
           keyExtractor={(index => index.id)}
