@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import { Platform, View } from 'react-native';
+import { Platform, View, Image } from 'react-native';
 import { Provider } from 'react-redux'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { Container, Header, Content, Icon } from 'native-base';
@@ -18,7 +18,6 @@ import Home from './views/Home'
 import Detail from './views/Detail'
 import Statistic from './views/Statistic'
 import Histories from './views/History'
-
 
 export default class App extends Component {
   render() {
@@ -70,18 +69,18 @@ const BottomNav = createBottomTabNavigator({
     tabBarIcon: ({ focused, horizontal, tintColor }) => {
       const { routeName } = navigation.state;
       if (routeName === 'Parking') {
-        return <Icon name="apps" />
+        return <Image source={require('./icons/parkIcon.png')} style={{ width: 25, height: 25}}/>
       } else if (routeName === 'Stats') {
-        return <Icon ios='ios-menu' android="md-menu" style={{fontSize: 20, color: 'red'}}/>
+        return <Image source={require('./icons/statsIcon.png')} style={{ width: 25, height: 25}}/>
       } else if (routeName === 'History') {
-        return  <Icon type="FontAwesome" name="home" />
+        return <Image source={require('./icons/historyIcon.png')} style={{ width: 25, height: 25}}/>
       }
     },
   }),
   tabBarOptions: {
     activeTintColor: '#F1FAEE',
     inactiveTintColor: 'rgba(194, 202, 214, 0.3)',
-    showLabel: true,
+    showLabel: false,
     style: {
       backgroundColor: '#1D3557'
     }
