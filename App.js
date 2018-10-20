@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { Provider } from 'react-redux'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 
@@ -36,17 +36,35 @@ const HomeStack = createStackNavigator({
     screen: Home,
     navigationOptions: {
       title: 'BUKAN TITLE',
-      headerStyle: {},
+      headerStyle: {
+        backgroundColor: 'white'
+      },
       headerTitleStyle: {}
     }
   },
   Detail: Detail
 })
 
+const HistoryStack = createStackNavigator({
+  Home: {
+    screen: Histories,
+    navigationOptions: {
+      title: 'History',
+      headerStyle: {
+        backgroundColor: 'white'
+      },
+      headerTitleStyle: {}
+    }
+  },
+  Detail: {
+    screen: Detail,
+  }
+})
+
 const BottomNav = createBottomTabNavigator({
-  Home: HomeStack,
+  Parking: HomeStack,
   Stats: Statistic,
-  History: Histories
+  History: HistoryStack
 }, {
   tabBarOptions: {
     activeTintColor: '#F1FAEE',

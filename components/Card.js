@@ -17,10 +17,10 @@ class Card extends Component {
         <TouchableHighlight onPress={this.goToStack}>
             <View style={styles.card}>
                 <View>
-                    <Text>{this.props.data.text}</Text>
+                    <Text style={{ fontSize: 18 }}>{this.props.data.text}</Text>
                 </View>
                 <View>
-                    <Text>{this.props.data.createdAt.split('').slice(0,15).join('')}</Text>
+                    <Text style={{ fontSize: 18 }}>{this.props.data.createdAt.split('').slice(0,15).join('')}</Text>
                 </View>
             </View>
         </TouchableHighlight>
