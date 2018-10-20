@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, Modal, TouchableHighlight, Alert } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
 
+console.disableYellowBox = true
 
 const images = [{
   // Simplest usage.
@@ -24,10 +25,17 @@ const images = [{
 
 class Detail extends Component {
   state = {
-    modalVisible: false
+    modalVisible: false,
+    urlImage: this.props.navigation.state.params.data.imgTrue
   }
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+  setModalVisible(visible, url) {
+    this.setState({
+      modalVisible: visible,
+      urlImage: url
+    });
+  }
+  componentDidMount = () => {
+    
   }
   render() {
     let { data } = this.props.navigation.state.params
@@ -45,32 +53,33 @@ class Detail extends Component {
           
             <View style={{ width: '100%', height: '45%', marginBottom: 25}}>
               <Text style={{fontWeight: 'bold'}}>Check In Image</Text>
-              <Image
-                style={{width: '100%', height: '100%'}}
-                source={{ uri: data.imgTrue }}
-              />
+              <TouchableHighlight onPress={() => { this.setModalVisible(!this.showAndHideImage, data.imgTrue) }}>
+                <Image
+                  style={{width: '100%', height: '100%'}}
+                  source={{ uri: data.imgTrue }}
+                />
+              </TouchableHighlight>
             </View>
 
               <View View style={{ width: '100%', height: '45%'}}>
                 <Text style={{fontWeight: 'bold'}}>Check Out Image</Text>
-                <TouchableHighlight onPress={() => { this.setModalVisible(!this.showAndHideImage) }}>
+                <TouchableHighlight onPress={() => { this.setModalVisible(!this.showAndHideImage, data.imgFalse) }}>
                   <Image
                     style={{width: '100%', height: '100%'}}
-                    source={{ uri: data.imgTrue }}
+                    source={{ uri: data.imgFalse }}
                   />
                 </TouchableHighlight>
               </View>
 
-            {/* <Modal visible={this.state.modalVisible} transparent={true}>
-              <ImageViewer imageUrls={images}/>
-            </Modal> */}
               <Modal
+                transparent={true}
                 visible={this.state.modalVisible}
                 onRequestClose={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}>
-                <ImageViewer imageUrls={images}/>
-
+                <ImageViewer imageUrls={[{
+                    url: this.state.urlImage
+                }]}/>
               </Modal>
 
           </View>

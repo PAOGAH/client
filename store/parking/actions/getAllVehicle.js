@@ -4,7 +4,7 @@ export default dispatch => {
     console.log(`masuk`)
     firebase
         .firestore()
-        .collection('lisence')
+        .collection('licenses')
         .get()
         .then((snapshot) => {
             let totalSlotParking = 50
