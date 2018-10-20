@@ -40,14 +40,4 @@ export default dispatch => {
         .catch(err => {
             console.log(err);
         });
-    // console.log(1)
-    // firebase.firestore().collection('users').get().then(snapshot => {
-    //     console.log(2)
-    //     snapshot.forEach(doc => {
-    //         console.log(doc.data())
-    //     })
-    // })
-    // .catch(err => {
-    //     console.log(err)
-    // })
 }

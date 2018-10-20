@@ -3,26 +3,7 @@ import { View, Text, StyleSheet, Image, Modal, TouchableHighlight, Alert } from 
 import ImageViewer from 'react-native-image-zoom-viewer';
 
 console.disableYellowBox = true
-
-const images = [{
-  // Simplest usage.
-  url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460',
-
-  // width: number
-  // height: number
-  // Optional, if you know the image size, you can set the optimization performance
-
-  // You can pass props to <Image />.
-  props: {
-      // headers: ...
-  }
-}, {
-  props: {
-      // Or you can set source directory.
-      // source: require('../background.png')
-  }
-}]
-
+ 
 class Detail extends Component {
   state = {
     modalVisible: false,
@@ -34,9 +15,7 @@ class Detail extends Component {
       urlImage: url
     });
   }
-  componentDidMount = () => {
-    
-  }
+
   render() {
     let { data } = this.props.navigation.state.params
     return (
