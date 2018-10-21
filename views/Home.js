@@ -45,9 +45,9 @@ class Home extends Component {
         </Item>
 
         <Item style={{ marginBottom: 20 }}>
-          <Input placeholder='Icon Alignment in Textbox'/>
+          <Input placeholder='Search...'/>
           <TouchableOpacity onPress={() => alert('hai')}>
-            <Icon active name='swap' />
+            <Icon name='search' />
           </TouchableOpacity>
         </Item>
 
