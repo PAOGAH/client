@@ -44,7 +44,7 @@ class Home extends Component {
           </Picker>
         </Item>
 
-        <Item>
+        <Item style={{ marginBottom: 20 }}>
           <Input placeholder='Icon Alignment in Textbox'/>
           <TouchableOpacity onPress={() => alert('hai')}>
             <Icon active name='swap' />
