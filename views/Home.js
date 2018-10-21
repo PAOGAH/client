@@ -26,6 +26,10 @@ class Home extends Component {
     this.props.getAllVehicle()
   }
 
+  componentDidMount = () => {
+    alert(this.state.orderBy)
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -39,6 +43,12 @@ class Home extends Component {
             placeholderStyle={{ color: "#bfc6ea" }}
             placeholderIconColor="#007aff"
             selectedValue={this.state.orderBy}
+            onValueChange={(val) => {
+              alert(val, '<=====');
+              this.setState({ orderBy: val }, (state) => {
+                alert(JSON.stringify(state));
+              });
+            }}
           >
             <Picker.Item label="Desc" value="key0" />
             <Picker.Item label="Asc" value="key1" />
