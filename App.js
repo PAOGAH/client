@@ -52,7 +52,7 @@ const HomeStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'BUKAN TITLE',
+      title: 'Parking',
       headerStyle: {
         backgroundColor: 'white'
       },
