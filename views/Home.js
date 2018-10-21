@@ -6,7 +6,8 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 
 import getVehicle from '../store/parking/actions/getAllVehicle'
-import Card from '../components/Card'
+// import Card from '../components/Card'
+import HomeCard from '../components/HomeCard'
 import IconFooter from '../components/IconFooter'
 
 firebase.firestore().settings({
@@ -54,10 +55,10 @@ class Home extends Component {
         <FlatList 
             data={this.props.allLisencesParking}
             keyExtractor={(index) => index.id}
-            renderItem={({ item }) => (
+            renderItem={({ item, index: parkingSpot }) => (
               <Fragment>
                   {
-                      item.status && <Card data={item} {...this.props}/>
+                      item.status && <HomeCard data={item} parkingSpot={parkingSpot} {...this.props}/>
                   }
               </Fragment>
             )}
