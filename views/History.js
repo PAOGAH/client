@@ -1,15 +1,24 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, StyleSheet } from 'react-native'
+import { Text, View, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
+import { Picker, Item, Icon, Input } from 'native-base';
 import { connect } from 'react-redux'
 
 import Card from '../components/Card'
 import Detail from './Detail'
 
 export class Histories extends Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      orderBy: 'desc',
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
-      
+
         <Item style={{ marginBottom: 10 }} picker>
           <Picker
             mode="dropdown"
