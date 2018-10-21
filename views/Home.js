@@ -55,10 +55,10 @@ class Home extends Component {
         <FlatList 
             data={this.props.allLisencesParking}
             keyExtractor={(index) => index.id}
-            renderItem={({ item }) => (
+            renderItem={({ item, index: parkingSpot }) => (
               <Fragment>
                   {
-                      item.status && <HomeCard data={item} {...this.props}/>
+                      item.status && <HomeCard data={item} parkingSpot={parkingSpot} {...this.props}/>
                   }
               </Fragment>
             )}

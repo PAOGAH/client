@@ -8,7 +8,7 @@ export class SpashScreen extends Component {
         <StatusBar hidden={true}/>
         <View>
           <Image 
-            source={{uri: 'https://s3.amazonaws.com/pakogah-project/PAKOGAH.png'}} 
+            source={require('../icons/paogah.png')} 
             style={{
               width: 350,
               height: 200
@@ -16,7 +16,7 @@ export class SpashScreen extends Component {
             resizeMode="cover"
             />
         </View>
-        <Text style={styles.title}>PAKOGA<Text style={{color: '#f04f10'}}>H</Text></Text>
+        <Text style={styles.title}>PAOGA<Text style={{color: '#f04f10'}}>H</Text></Text>
         <Text style={styles.description}>Parking Automatic Gate Hacktiv</Text>
       </View>
     )
