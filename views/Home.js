@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { View, Text, FlatList, StyleSheet, StatusBar, Alert } from 'react-native';
+import { View, FlatList, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
+import { Picker, Item, Icon, Input } from 'native-base';
 import { connect } from 'react-redux'
 import firebase from 'firebase'
 import 'firebase/firestore'
@@ -16,6 +17,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      orderBy: 'desc',
     };
   }
 
@@ -27,6 +29,28 @@ class Home extends Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden={true}/>
+        <Item style={{ marginBottom: 10 }} picker>
+          <Picker
+            mode="dropdown"
+            iosIcon={<Icon name="ios-arrow-down-outline" />}
+            style={{ width: undefined }}
+            placeholder="Order By"
+            placeholderStyle={{ color: "#bfc6ea" }}
+            placeholderIconColor="#007aff"
+            selectedValue={this.state.orderBy}
+          >
+            <Picker.Item label="Desc" value="key0" />
+            <Picker.Item label="Asc" value="key1" />
+          </Picker>
+        </Item>
+
+        <Item>
+          <Input placeholder='Icon Alignment in Textbox'/>
+          <TouchableOpacity onPress={() => alert('hai')}>
+            <Icon active name='swap' />
+          </TouchableOpacity>
+        </Item>
+
         <FlatList 
             data={this.props.allLisencesParking}
             keyExtractor={(index) => index.id}
