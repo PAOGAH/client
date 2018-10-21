@@ -27,7 +27,7 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
-    alert(this.state.orderBy)
+    // alert(this.state.orderBy)
   }
 
   render() {
@@ -44,9 +44,9 @@ class Home extends Component {
             placeholderIconColor="#007aff"
             selectedValue={this.state.orderBy}
             onValueChange={(val) => {
-              alert(val, '<=====');
+              // alert(val, '<=====');
               this.setState({ orderBy: val }, (state) => {
-                alert(JSON.stringify(state));
+                // alert(JSON.stringify(state));
               });
             }}
           >

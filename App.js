@@ -52,11 +52,22 @@ const HomeStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'Parking',
+      title: 'BUKAN',
       headerStyle: {
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        textAlign: 'center',
+        justifyContent: 'center'
       },
-      headerTitleStyle: {}
+      headerTitleStyle: {
+        flex: 1,
+        textAlign: 'center',
+        justifyContent: 'center'
+      },
+      headerRight: (
+        <View style={{marginRight: 12}}>
+          <Icon name='search'/>
+        </View>
+      )
     }
   },
   Detail: Detail
@@ -70,7 +81,7 @@ const HistoryStack = createStackNavigator({
       headerStyle: {
         backgroundColor: 'white'
       },
-      headerTitleStyle: {}
+      headerTitleStyle: {},
     }
   },
   Detail: {
