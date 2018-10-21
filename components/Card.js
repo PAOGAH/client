@@ -16,14 +16,6 @@ class Card extends Component {
   render() {
     return (
       <TouchableHighlight onPress={this.goToStack}>
-          {/* <View style={styles.card}>
-              <View>
-                  <Text style={{ fontSize: 18 }}>{this.props.data.text}</Text>
-              </View>
-              <View>
-                  <Text style={{ fontSize: 18 }}>{this.props.data.createdAt.split('').slice(0,15).join('')}</Text>
-              </View>
-          </View> */}
         <CardNativeBase>
           <CardItem>
             <Body style={styles.card}>

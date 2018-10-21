@@ -20,29 +20,43 @@ class PieChartComponent extends Component {
     return (
       <View>
         <StatusBar hidden={true}/>
-        <View style={styles.container}>
-          <Text style={styles.title}> Information </Text>
-          <View style={styles.row}>
-            <Square background="#2196f3"/>
-            <Text style={{ marginLeft: 10, marginRight: 10 }}>Empty, </Text>
-            <Square background="#4CAF50"/>
-            <Text style={{ marginLeft: 10, marginRight: 10 }}>Fill</Text>
+        <View>
+          <View style={styles.container}>
+            <Text style={styles.title}> Information </Text>
+            <View style={styles.row}>
+              <Square background="#2196f3"/>
+              <Text style={{ marginLeft: 10, marginRight: 10 }}>Empty, </Text>
+              <Square background="#4CAF50"/>
+              <Text style={{ marginLeft: 10, marginRight: 10 }}>Fill</Text>
+            </View>
           </View>
 
-          <PieChart
+          {/* <PieChart
             chart_wh={chart_wh}
             series={series}
             sliceColor={sliceColor}
-          />
-        </View>
-        <View style={styles.row}>
-          <View style={styles.column}>
-            <Text style={{fontSize: 20}}>Empty</Text>
-            <Text style={{fontSize: 20}}>Fill</Text>
-          </View>
-          <View style={styles.column}>
-            <Text style={{fontSize: 20}}>: {this.props.totalEmpty} Slot</Text>
-            <Text style={{fontSize: 20}}>: {this.props.totalVehicle} Vehicles</Text>
+          /> */}
+          <View style={styles.chart}>
+            <PieChart
+              chart_wh={chart_wh}
+              series={series}
+              sliceColor={sliceColor}
+              doughnut={true}
+              coverRadius={0.8}
+              style={{
+                position: 'absolute',
+                zIndex: 8
+              }}
+            />
+            <Text 
+              style={{
+                fontSize: 25, 
+                position: 'absolute',
+                top: 105,
+                color: 'black',
+              }}>Available slot {this.props.totalEmpty}</Text>
+
+
           </View>
         </View>
       </View>
@@ -52,7 +66,7 @@ class PieChartComponent extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   title: {
     fontSize: 30,
@@ -65,6 +79,10 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: 'column',
     margin: 10,
+  },
+  chart: {
+    position: 'relative',
+    alignItems: 'center',
     
   }
 })

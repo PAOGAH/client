@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import { Platform, View, Image } from 'react-native';
+import { Platform, View, Image, Text } from 'react-native';
 import { Provider } from 'react-redux'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { Container, Header, Content, Icon } from 'native-base';
@@ -18,12 +18,30 @@ import Home from './views/Home'
 import Detail from './views/Detail'
 import Statistic from './views/Statistic'
 import Histories from './views/History'
+import SplashScreen from './views/SplashScreen'
 
 export default class App extends Component {
+  state = {
+    loading: false
+  }
+
+  componentDidMount = () => {
+    this.setState({
+      loading: true
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          loading: false
+        })
+      }, 1500);
+    })
+  }
   render() {
     return (
       <Provider store={store}>
-        <BottomNav/>
+        {
+          this.state.loading ? <SplashScreen/> : <BottomNav/>
+        }
       </Provider>
     );
   }
