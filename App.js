@@ -7,10 +7,10 @@
  */
 
 import React, {Component} from 'react';
-import { Platform } from 'react-native';
+import { Platform, View, Image } from 'react-native';
 import { Provider } from 'react-redux'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
-
+import { Container, Header, Content, Icon } from 'native-base';
 
 import './config'
 import store from './store'
@@ -18,7 +18,6 @@ import Home from './views/Home'
 import Detail from './views/Detail'
 import Statistic from './views/Statistic'
 import Histories from './views/History'
-
 
 export default class App extends Component {
   render() {
@@ -36,22 +35,52 @@ const HomeStack = createStackNavigator({
     screen: Home,
     navigationOptions: {
       title: 'BUKAN TITLE',
-      headerStyle: {},
+      headerStyle: {
+        backgroundColor: 'white'
+      },
       headerTitleStyle: {}
     }
   },
   Detail: Detail
 })
 
+const HistoryStack = createStackNavigator({
+  Home: {
+    screen: Histories,
+    navigationOptions: {
+      title: 'History',
+      headerStyle: {
+        backgroundColor: 'white'
+      },
+      headerTitleStyle: {}
+    }
+  },
+  Detail: {
+    screen: Detail,
+  }
+})
+
 const BottomNav = createBottomTabNavigator({
-  Home: HomeStack,
+  Parking: HomeStack,
   Stats: Statistic,
-  History: Histories
+  History: HistoryStack
 }, {
+  navigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      const { routeName } = navigation.state;
+      if (routeName === 'Parking') {
+        return <Image source={require('./icons/parkIcon.png')} style={{ width: 25, height: 25}}/>
+      } else if (routeName === 'Stats') {
+        return <Image source={require('./icons/statsIcon.png')} style={{ width: 25, height: 25}}/>
+      } else if (routeName === 'History') {
+        return <Image source={require('./icons/historyIcon.png')} style={{ width: 25, height: 25}}/>
+      }
+    },
+  }),
   tabBarOptions: {
     activeTintColor: '#F1FAEE',
     inactiveTintColor: 'rgba(194, 202, 214, 0.3)',
-    showLabel: true,
+    showLabel: false,
     style: {
       backgroundColor: '#1D3557'
     }

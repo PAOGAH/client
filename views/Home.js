@@ -3,8 +3,10 @@ import { View, Text, FlatList, StyleSheet, StatusBar, Alert } from 'react-native
 import { connect } from 'react-redux'
 import firebase from 'firebase'
 import 'firebase/firestore'
+
 import getVehicle from '../store/parking/actions/getAllVehicle'
 import Card from '../components/Card'
+import IconFooter from '../components/IconFooter'
 firebase.firestore().settings({
   timestampsInSnapshots: true
 })
