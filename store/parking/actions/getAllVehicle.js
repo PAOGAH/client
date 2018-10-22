@@ -1,4 +1,10 @@
 import firebase from 'firebase'
+
+firebase.firestore().settings({
+  timestampsInSnapshots: true
+})
+
+
 const db = firebase.firestore()
 export default dispatch => {
   db.collection('licenses').onSnapshot(snapshot => {

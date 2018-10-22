@@ -5,14 +5,16 @@ import { connect } from 'react-redux'
 import firebase from 'firebase'
 import 'firebase/firestore'
 
+firebase.firestore().settings({
+  timestampsInSnapshots: true
+})
+
 import getVehicle from '../store/parking/actions/getAllVehicle'
 // import Card from '../components/Card'
 import HomeCard from '../components/HomeCard'
 import IconFooter from '../components/IconFooter'
 
-firebase.firestore().settings({
-  timestampsInSnapshots: true
-})
+
 
 class Home extends Component {
   constructor(props) {
@@ -28,6 +30,14 @@ class Home extends Component {
 
   componentDidMount = () => {
     // alert(this.state.orderBy)
+  }
+
+  searchForm = (e) => {
+
+  }
+
+  search = () => {
+
   }
 
   render() {
@@ -59,8 +69,8 @@ class Home extends Component {
         </Item>
 
         <Item style={{ marginBottom: 20 }}>
-          <Input placeholder='Search...'/>
-          <TouchableOpacity onPress={() => alert('hai')}>
+          <Input placeholder='Search...' onValueChange={this.searchForm}/>
+          <TouchableOpacity onPress={this.search}>
             <Icon name='search' />
           </TouchableOpacity>
         </Item>
