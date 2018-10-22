@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { View, FlatList, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
+import { View, FlatList, StyleSheet, StatusBar, TouchableOpacity, ScrollView } from 'react-native';
 import { Picker, Item, Icon, Input } from 'native-base';
 import { connect } from 'react-redux'
 import firebase from 'firebase'
@@ -33,7 +33,10 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
+
+        
         <StatusBar hidden={true}/>
+
         <Item style={{ marginBottom: 10 }} picker>
           <Picker
             mode="dropdown"
@@ -61,7 +64,6 @@ class Home extends Component {
             <Icon name='search' />
           </TouchableOpacity>
         </Item>
-
         <FlatList 
             data={this.props.allLisencesParking}
             keyExtractor={(index) => index.id}

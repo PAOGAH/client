@@ -52,22 +52,29 @@ const HomeStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'BUKAN',
+      headerTitle: (
+        <View style={{marginLeft: 5, minWidth: 50}} >
+          <Image source={require('./icons/paogah.png')} style={{ width: 30, height: 30 }}/>
+        </View>
+      ),
+      // title: 'BUKAN',
       headerStyle: {
-        backgroundColor: 'white',
-        textAlign: 'center',
-        justifyContent: 'center'
+        // backgroundColor: 'white',
+        // textAlign: 'center',
+        // justifyContent: 'center'
       },
       headerTitleStyle: {
-        flex: 1,
-        textAlign: 'center',
-        justifyContent: 'center'
+        // flex: 1,
+        // textAlign: 'center',
+        // justifyContent: 'center',
+        // alignSelf: 'center',
       },
       headerRight: (
         <View style={{marginRight: 12}}>
           <Icon name='search'/>
         </View>
-      )
+      ),
+      
     }
   },
   Detail: Detail
