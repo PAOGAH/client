@@ -40,7 +40,6 @@ class Detail extends Component {
   }
   bayarWoi = (currentTime) => {
     // console.log('iniiii =>>', currentTime)
-    alert(currentTime)
     let pay;
     if (
       currentTime == "an hour ago" || 
