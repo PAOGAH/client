@@ -21,6 +21,7 @@ import Histories from './views/History'
 import SplashScreen from './views/SplashScreen'
 import SearchView from './views/Search'
 import DetailHistory from './views/DetailHistory'
+import SearchViewHistory from './views/SearchViewHistory'
 
 export default class App extends Component {
   state = {
@@ -54,25 +55,13 @@ export default class App extends Component {
 const HomeStack = createStackNavigator({
   Home: Home,
   Detail: Detail,
-  Search: {
-    screen: SearchView
-  }
+  Search: SearchView
 })
 
 const HistoryStack = createStackNavigator({
-  Home: {
-    screen: Histories,
-    navigationOptions: {
-      title: 'History',
-      headerStyle: {
-        backgroundColor: 'white'
-      },
-      headerTitleStyle: {},
-    }
-  },
-  Detail: {
-    screen: DetailHistory,
-  }
+  Home: Histories,
+  Detail: DetailHistory,
+  Search: SearchViewHistory
 })
 
 const BottomNav = createBottomTabNavigator({

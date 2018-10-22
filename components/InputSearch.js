@@ -9,15 +9,16 @@ export class InputSearch extends Component {
   changeText = (text) => {
     if(text[text.length-1] !== '\\'){
       let myRegEx = new RegExp(text.toLowerCase() + '(\n.*)*', 'g');
-      let searchLicense = []
-      this.props.allLisencesParking.forEach(license => {
-        let licenseText = license.text.toLowerCase().split(' ').join('')
-        
+      let searchLicenses = []
+      
+      this.props[this.props.question].forEach(license => {
+        let licenseText = license.text.toLowerCase()
         if(licenseText.match(myRegEx)) {
-          searchLicense.push(license)
+          searchLicenses.push(license)
         }
       })
-      this.props.searchInput(searchLicense)
+
+      this.props.searchInput(searchLicenses)
     }
     
   }

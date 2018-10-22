@@ -5,18 +5,20 @@ import { connect } from 'react-redux'
 import searchLicense from '../store/parking/actions/searchLicense'
 import InputSearch from '../components/InputSearch'
 import HomeCard from '../components/HomeCard'
+import Card from '../components/Card'
 
 export class Search extends Component {
   render() {
     return (
       <View>
+        {/* <Text>{JSON.stringify(this.props.searchLicense)}</Text> */}
         <FlatList 
           data={this.props.searchLicense}
           keyExtractor={(index) => index.id}
           renderItem={({ item, index: parkingSpot }) => (
             <Fragment>
                 {
-                  item.status && <HomeCard data={item} parkingSpot={parkingSpot} {...this.props}/>
+                  !item.status && <Card data={item} parkingSpot={parkingSpot} {...this.props}/>
                 }
             </Fragment>
           )}
@@ -26,7 +28,7 @@ export class Search extends Component {
   }
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: <InputSearch question="allLisencesParking"/>
+      headerTitle: <InputSearch question="allLisences"/>
     };
   };
 }

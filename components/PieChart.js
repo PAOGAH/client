@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    margin: 10
+    margin: 10,
+    fontWeight: 'bold'
   },
   row: {
     flexDirection: 'row',

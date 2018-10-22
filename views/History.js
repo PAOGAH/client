@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, FlatList, StyleSheet, ScrollView} from 'react-native'
+import { View, FlatList, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { Picker, Item, Icon } from 'native-base';
 import { connect } from 'react-redux'
 
@@ -50,6 +50,21 @@ export class Histories extends Component {
       </View>
     </ScrollView>
     )
+  }
+  
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'History',
+      headerRight: (
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('Search')
+        }}>
+          <View style={{marginRight: 12}}>
+              <Icon name='search'/>
+          </View>
+        </TouchableOpacity>
+      )
+    }
   }
 }
 
