@@ -79,7 +79,7 @@ class HomeCard extends Component {
                 </Button>
               </Left>
               <Right>
-                <Text>{moment(this.props.data.createdAt).startOf('hour').fromNow()}</Text>
+                <Text>{moment(this.props.data.createdAt).fromNow()}</Text>
               </Right>
             </CardItem>
           </CardNativeBase>

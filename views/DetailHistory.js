@@ -42,7 +42,7 @@ class Detail extends Component {
     console.log('iniiii =>>', currentTime)
     let pay;
     if (
-      currentTime == "an hour ago" || 
+      currentTime == "1 hours ago" || 
       currentTime.split(' ').indexOf('minutes') != -1 ||
       currentTime == "a few seconds ago"
       ) {
@@ -89,6 +89,7 @@ class Detail extends Component {
             </CardItem>
             <CardItem>
               <Body>
+                <Text>Check In Image</Text>
                 <TouchableHighlight
                   onPress={() => {
                     this.setModalVisible(!this.showAndHideImage, data.imgTrue);
@@ -99,6 +100,21 @@ class Detail extends Component {
                     style={{ height: 150, width: 300, flex: 0}}
                   />
                 </TouchableHighlight>
+
+                <Text>Check Out Image</Text>
+
+                <TouchableHighlight
+                  onPress={() => {
+                    this.setModalVisible(!this.showAndHideImage, data.imgFalse);
+                  }}
+                >
+                  <Image
+                    source={{ uri: data.imgFalse }}
+                    style={{ height: 150, width: 300}}
+                  />
+                </TouchableHighlight>
+
+                
                 <Text style={{marginTop: 10, fontSize: 25}}>Parking Fee: <Text style={{fontSize: 20}}>{this.bayarWoi(moment(data.createdAt).fromNow())}</Text></Text>
               </Body>
             </CardItem>
@@ -120,58 +136,12 @@ class Detail extends Component {
           />
         </Modal>
       </Fragment>
-      // <View style={styles.container}>
-      //   <View style={styles.row}>
-      //     <View style={styles.columnLeft}>
-      //       <Text>Lisence Plate  : {data.text}</Text>
-      //       <Text>CreatedAt : {data.createdAt.split('').slice(0,15).join('')}</Text>
-      //       {
-      //         data.updatedAt? <Text>UpdateAt : {data.updatedAt.split('').slice(0,15).join('')}</Text> : <Text>Check Out Time : -</Text>
-      //       }
-      //     </View>
-      //     <View style={styles.columnRight}>
-
-      //       <View style={{ width: '100%', height: '45%', marginBottom: 25}}>
-      //         <Text style={{fontWeight: 'bold'}}>Check In Image</Text>
-      // <TouchableHighlight onPress={() => { this.setModalVisible(!this.showAndHideImage, data.imgTrue) }}>
-      //           <Image
-      //             style={{width: '100%', height: '100%'}}
-      //             source={{ uri: data.imgTrue }}
-      //           />
-      // </TouchableHighlight>
-      //       </View>
-
-      //         <View View style={{ width: '100%', height: '45%'}}>
-      //           <Text style={{fontWeight: 'bold'}}>Check Out Image</Text>
-
-      //         </View>
-
-      //     </View>
-      //   </View>
-      // </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10
-  },
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-  columnLeft: {
-    marginTop: 20,
-    flexDirection: "column",
-    maxWidth: "60%"
-  },
-  columnRight: {
-    flexDirection: "column",
-    minWidth: "40%",
-    alignItems: "center"
-  }
+
 });
 
 export default Detail;

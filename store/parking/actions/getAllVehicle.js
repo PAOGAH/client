@@ -7,7 +7,7 @@ firebase.firestore().settings({
 
 const db = firebase.firestore()
 export default dispatch => {
-  db.collection('licenses').onSnapshot(snapshot => {
+  db.collection('licenses').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
     let arr = []
     let totalSlotParking = 50
     let allPlatTrue = []
@@ -15,11 +15,13 @@ export default dispatch => {
       let data = doc.data()
       if(data.status) {
         allPlatTrue.push(data)
+      } else {
+        arr.push({
+          id: doc.id,
+          ...data
+        })
+
       }
-      arr.push({
-        id: doc.id,
-        ...data
-      })
     })
     totalSlotParking -= allPlatTrue.length
 

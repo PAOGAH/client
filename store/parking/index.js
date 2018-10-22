@@ -2,7 +2,8 @@ let initialParking = {
   allLisences: [],
   allLisencesParking: [],
   totalVehicle: 0,
-  totalEmpty: 50
+  totalEmpty: 50,
+  searchLicense: []
 }
 
 function parking(state = initialParking, action) {
@@ -14,6 +15,11 @@ function parking(state = initialParking, action) {
               allLisencesParking: action.payload.allLisencesParking,
               totalEmpty: action.payload.totalEmpty,
               totalVehicle: action.payload.totalVehicle
+          }
+      case 'SEARCH_LICENSE':
+          return {
+              ...state,
+              searchLicense: action.payload.license
           }
       default:
           return state

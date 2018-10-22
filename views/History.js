@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, FlatList, StyleSheet, TouchableOpacity, ScrollView} from 'react-native'
 import { Picker, Item, Icon, Input } from 'native-base';
 import { connect } from 'react-redux'
 
@@ -17,8 +17,8 @@ export class Histories extends Component {
 
   render() {
     return (
+    <ScrollView>
       <View style={styles.container}>
-
         <Item style={{ marginBottom: 10 }} picker>
           <Picker
             mode="dropdown"
@@ -33,7 +33,7 @@ export class Histories extends Component {
             <Picker.Item label="Asc" value="key1" />
           </Picker>
         </Item>
-
+        
         <Item style={{ marginBottom: 20 }}>
           <Input placeholder='Search...'/>
           <TouchableOpacity onPress={() => alert('hai')}>
@@ -45,14 +45,16 @@ export class Histories extends Component {
           keyExtractor={(index => index.id)}
           renderItem={({  item }) => <Card data={item} {...this.props}/>}
         />
+
       </View>
+    </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    margin: 15,
+    padding: 15,
   }
 })
 

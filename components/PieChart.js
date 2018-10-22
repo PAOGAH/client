@@ -16,7 +16,6 @@ class PieChartComponent extends Component {
     const chart_wh = 250
     const series = [this.props.totalEmpty, this.props.totalVehicle]
     const sliceColor = ['#2196F3', '#4CAF50']
-    // console.log(series)
     return (
       <View>
         <StatusBar hidden={true}/>
