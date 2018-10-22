@@ -57,24 +57,9 @@ class HomeCard extends Component {
                 </Text>
               </Body>
             </CardItem>
-            {/* <CardItem cardBody> */}
-              {/*<TouchableOpacity onPress={this.goToStack}>
-                <Image
-                  source={{ uri: this.props.data.imgTrue }}
-                  style={{
-                    height: 200,
-                    width: 350,
-                    flex: 1,
-                    marginRight: 100,
-                    marginBottom: 10
-                  }}
-                />
-              </TouchableOpacity>*/}
-            {/* </CardItem> */}
             <CardItem>
               <Left>
                 <Button transparent>
-                  <Icon active name="thumbs-up" />
                   <Text>Parking Spot: {this.props.parkingSpot+1}</Text>
                 </Button>
               </Left>

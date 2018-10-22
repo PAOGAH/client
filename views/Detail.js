@@ -39,11 +39,13 @@ class Detail extends Component {
     });
   }
   bayarWoi = (currentTime) => {
-    console.log('iniiii =>>', currentTime)
+    // console.log('iniiii =>>', currentTime)
+    alert(currentTime)
     let pay;
     if (
       currentTime == "an hour ago" || 
       currentTime.split(' ').indexOf('minutes') != -1 ||
+      currentTime.split(' ').indexOf('minute') != -1 ||
       currentTime == "a few seconds ago"
       ) {
       pay = 'Rp. 3000,00'

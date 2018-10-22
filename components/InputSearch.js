@@ -11,7 +11,7 @@ export class InputSearch extends Component {
       let myRegEx = new RegExp(text.toLowerCase() + '(\n.*)*', 'g');
       let searchLicense = []
       this.props.allLisencesParking.forEach(license => {
-        let licenseText = license.text.toLowerCase()
+        let licenseText = license.text.toLowerCase().split(' ').join('')
         
         if(licenseText.match(myRegEx)) {
           searchLicense.push(license)

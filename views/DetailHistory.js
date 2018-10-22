@@ -130,7 +130,10 @@ class Detail extends Component {
           <ImageViewer
             imageUrls={[
               {
-                url: this.state.urlImage
+                url: data.imgTrue
+              },
+              {
+                url: data.imgFalse
               }
             ]}
           />

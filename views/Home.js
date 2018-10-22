@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { View, FlatList, StyleSheet, StatusBar, TouchableOpacity, ScrollView, Alert, Image } from 'react-native';
-import { Picker, Item, Icon, Input } from 'native-base';
+import { Picker, Item, Icon, Spinner, Text } from 'native-base';
 import { connect } from 'react-redux'
 import firebase from 'firebase'
 import 'firebase/firestore'
@@ -10,9 +10,8 @@ firebase.firestore().settings({
 })
 
 import getVehicle from '../store/parking/actions/getAllVehicle'
-// import Card from '../components/Card'
 import HomeCard from '../components/HomeCard'
-import getNewData from '../store/parking/actions/getNewData'
+import sort from '../store/parking/actions/sortParking'
 
 
 
@@ -20,69 +19,32 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      orderBy: 'desc',
-      parkingLicense: []
+      orderBy: 'desc'
     };
   }
 
   componentDidMount = () => {
     this.props.getAllVehicle()
-    this.setState({
-      parkingLicense: this.props.allLisencesParking
-    })
-
-    firebase.firestore().collection('licenses').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
-      // alert('realtime')
-      let newData = []
-      let newAllPlatTrue = []
-      snapshot.forEach(doc => {
-        let data = doc.data()
-        if(data.status) {
-          newAllPlatTrue.push(data)
-        } else {
-          newData.push({
-            id: doc.id,
-            ...data
-          })
-  
-        }
-      })
-      this.setState({
-        parkingLicense: newAllPlatTrue
-      })
-    })
   }
 
 
   sortBy = (val) => {
-    firebase.firestore()
-      .collection('licenses')
-      .where('status', '==', true)
-      .orderBy('createdAt', val)
-      .get()
-      .then(snapshot => {
-        let arr = []
-        snapshot.forEach(doc => {
-          arr.push(doc.data())
-        })
-        this.setState({
-          parkingLicense: arr,
-          orderBy: val
-        })
-      })
-      .catch(err => {
-        alert(JSON.stringify(err))
-      })
+    this.setState({
+      orderBy: val
+    })
+    this.props.sortParking(val)
   }
 
   render() {
     return (
     <ScrollView>
+
+      
       <View style={styles.container}>
         <StatusBar hidden={true}/>
-
         
           <Item style={{ marginBottom: 10 }} picker>
+            <Text>Sort By : </Text>
             <Picker
               mode="dropdown"
               iosIcon={<Icon name="ios-arrow-down-outline" />}
@@ -97,17 +59,21 @@ class Home extends Component {
               <Picker.Item label="Asc" value="asc" />
             </Picker>
           </Item>
-          <FlatList 
-              data={this.state.parkingLicense}
-              keyExtractor={(index) => index.id}
-              renderItem={({ item, index: parkingSpot }) => (
-                <Fragment>
-                    {
-                        item.status && <HomeCard data={item} parkingSpot={parkingSpot} {...this.props}/>
-                    }
-                </Fragment>
-              )}
-          />
+          {
+            this.props.loadingGetLicenses ? <Spinner color='blue' /> : (
+                <FlatList 
+                  data={this.props.allLisencesParking}
+                  keyExtractor={(index) => index.id}
+                  renderItem={({ item, index: parkingSpot }) => (
+                    <Fragment>
+                        {
+                            item.status && <HomeCard data={item} parkingSpot={parkingSpot} {...this.props}/>
+                        }
+                    </Fragment>
+                  )}
+                />
+              )
+          }
       </View>
     </ScrollView>
     );
@@ -145,7 +111,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getAllVehicle: () => dispatch(getVehicle),
-    getNewUpdate: (data) => dispatch(getNewData(data))
+    sortParking: (val) => dispatch(sort(val))
   }
 }
 

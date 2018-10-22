@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, StyleSheet, TouchableOpacity, ScrollView} from 'react-native'
-import { Picker, Item, Icon, Input } from 'native-base';
+import { View, FlatList, StyleSheet, ScrollView} from 'react-native'
+import { Picker, Item, Icon } from 'native-base';
 import { connect } from 'react-redux'
 
 import Card from '../components/Card'
-import Detail from './Detail'
-
+import sort from '../store/parking/actions/sortHistory'
 export class Histories extends Component {
 
   constructor (props) {
@@ -14,11 +13,18 @@ export class Histories extends Component {
       orderBy: 'desc',
     };
   }
+  sortBy = (val) => {
+    this.setState({
+      orderBy: val
+    })
+    this.props.sortHistory(val)
+  }
 
   render() {
     return (
     <ScrollView>
       <View style={styles.container}>
+
         <Item style={{ marginBottom: 10 }} picker>
           <Picker
             mode="dropdown"
@@ -28,18 +34,13 @@ export class Histories extends Component {
             placeholderStyle={{ color: "#bfc6ea" }}
             placeholderIconColor="#007aff"
             selectedValue={this.state.orderBy}
+            onValueChange={this.sortBy}
           >
-            <Picker.Item label="Desc" value="key0" />
-            <Picker.Item label="Asc" value="key1" />
+            <Picker.Item label="Desc" value="desc" />
+            <Picker.Item label="Asc" value="asc" />
           </Picker>
         </Item>
         
-        <Item style={{ marginBottom: 20 }}>
-          <Input placeholder='Search...'/>
-          <TouchableOpacity onPress={() => alert('hai')}>
-            <Icon name='search' />
-          </TouchableOpacity>
-        </Item>
         <FlatList
           data={this.props.allLisences}
           keyExtractor={(index => index.id)}
@@ -62,4 +63,10 @@ const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps, null)(Histories)
+const mapDispatchToProps = dispatch => {
+  return {
+    sortHistory: (val) => dispatch(sort(val))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Histories)

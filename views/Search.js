@@ -1,17 +1,26 @@
-import React, { Component } from 'react'
-import { View } from 'react-native'
-import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
+import React, { Component, Fragment } from 'react'
+import { View, FlatList, Text } from 'react-native'
 import { connect } from 'react-redux'
 
 import searchLicense from '../store/parking/actions/searchLicense'
 import InputSearch from '../components/InputSearch'
+import HomeCard from '../components/HomeCard'
 
 export class Search extends Component {
   render() {
     return (
       <View>
-        <Text> {JSON.stringify(this.props.searchLicense)} </Text>
-        
+        <FlatList 
+          data={this.props.searchLicense}
+          keyExtractor={(index) => index.id}
+          renderItem={({ item, index: parkingSpot }) => (
+            <Fragment>
+                {
+                  item.status && <HomeCard data={item} parkingSpot={parkingSpot} {...this.props}/>
+                }
+            </Fragment>
+          )}
+        />
       </View>
     )
   }
