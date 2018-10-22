@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 const db = firebase.firestore()
 export default dispatch => {
-  db.collection('licenses').get().then(snapshot => {
+  db.collection('licenses').onSnapshot(snapshot => {
     let arr = []
     let totalSlotParking = 50
     let allPlatTrue = []
