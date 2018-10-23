@@ -80,6 +80,9 @@ class Home extends Component {
   }
   static navigationOptions = ({ navigation }) => {
     return {
+      headerStyle: {
+        backgroundColor: '#1E90CF'
+      },
       headerTitle: (
         <View style={{flexDirection: 'row', alignItems: 'center'}} >
           <Image source={require('../icons/paogah.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>
