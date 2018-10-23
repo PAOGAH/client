@@ -7,10 +7,10 @@
  */
 
 import React, {Component} from 'react';
-import { Platform, View, Image, Text } from 'react-native';
+import { Platform, View, Image, Text, TouchableOpacity } from 'react-native';
 import { Provider } from 'react-redux'
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
-import { Container, Header, Content, Icon } from 'native-base';
+import { createBottomTabNavigator, createStackNavigator, NavigationActions } from 'react-navigation'
+import { Container, Header, Content, Icon, Button } from 'native-base';
 
 import './config'
 import store from './store'
@@ -19,6 +19,9 @@ import Detail from './views/Detail'
 import Statistic from './views/Statistic'
 import Histories from './views/History'
 import SplashScreen from './views/SplashScreen'
+import SearchView from './views/Search'
+import DetailHistory from './views/DetailHistory'
+import SearchViewHistory from './views/SearchViewHistory'
 
 export default class App extends Component {
   state = {
@@ -45,48 +48,20 @@ export default class App extends Component {
       </Provider>
     );
   }
+
 }
 
 
 const HomeStack = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      title: 'BUKAN',
-      headerStyle: {
-        backgroundColor: 'white',
-        textAlign: 'center',
-        justifyContent: 'center'
-      },
-      headerTitleStyle: {
-        flex: 1,
-        textAlign: 'center',
-        justifyContent: 'center'
-      },
-      headerRight: (
-        <View style={{marginRight: 12}}>
-          <Icon name='search'/>
-        </View>
-      )
-    }
-  },
-  Detail: Detail
+  Home: Home,
+  Detail: Detail,
+  Search: SearchView
 })
 
 const HistoryStack = createStackNavigator({
-  Home: {
-    screen: Histories,
-    navigationOptions: {
-      title: 'History',
-      headerStyle: {
-        backgroundColor: 'white'
-      },
-      headerTitleStyle: {},
-    }
-  },
-  Detail: {
-    screen: Detail,
-  }
+  Home: Histories,
+  Detail: DetailHistory,
+  Search: SearchViewHistory
 })
 
 const BottomNav = createBottomTabNavigator({

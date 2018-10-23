@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
-import { Picker, Item, Icon, Input } from 'native-base';
+import { View, FlatList, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
+import { Picker, Item, Icon } from 'native-base';
 import { connect } from 'react-redux'
 
 import Card from '../components/Card'
-import Detail from './Detail'
-
+import sort from '../store/parking/actions/sortHistory'
 export class Histories extends Component {
 
   constructor (props) {
@@ -14,9 +13,16 @@ export class Histories extends Component {
       orderBy: 'desc',
     };
   }
+  sortBy = (val) => {
+    this.setState({
+      orderBy: val
+    })
+    this.props.sortHistory(val)
+  }
 
   render() {
     return (
+    <ScrollView>
       <View style={styles.container}>
 
         <Item style={{ marginBottom: 10 }} picker>
@@ -28,31 +34,43 @@ export class Histories extends Component {
             placeholderStyle={{ color: "#bfc6ea" }}
             placeholderIconColor="#007aff"
             selectedValue={this.state.orderBy}
+            onValueChange={this.sortBy}
           >
-            <Picker.Item label="Desc" value="key0" />
-            <Picker.Item label="Asc" value="key1" />
+            <Picker.Item label="Desc" value="desc" />
+            <Picker.Item label="Asc" value="asc" />
           </Picker>
         </Item>
-
-        <Item style={{ marginBottom: 20 }}>
-          <Input placeholder='Search...'/>
-          <TouchableOpacity onPress={() => alert('hai')}>
-            <Icon name='search' />
-          </TouchableOpacity>
-        </Item>
+        
         <FlatList
           data={this.props.allLisences}
           keyExtractor={(index => index.id)}
           renderItem={({  item }) => <Card data={item} {...this.props}/>}
         />
+
       </View>
+    </ScrollView>
     )
+  }
+  
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'History',
+      headerRight: (
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('Search')
+        }}>
+          <View style={{marginRight: 12}}>
+              <Icon name='search'/>
+          </View>
+        </TouchableOpacity>
+      )
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    margin: 15,
+    padding: 15,
   }
 })
 
@@ -60,4 +78,10 @@ const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps, null)(Histories)
+const mapDispatchToProps = dispatch => {
+  return {
+    sortHistory: (val) => dispatch(sort(val))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Histories)
