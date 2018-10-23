@@ -8,7 +8,7 @@ export class SpashScreen extends Component {
         <StatusBar hidden={true}/>
         <View>
           <Image 
-            source={require('../icons/paogah.png')} 
+            source={require('../icons/paogahtopi.png')} 
             style={{
               width: 350,
               height: 200

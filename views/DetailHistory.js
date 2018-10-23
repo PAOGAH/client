@@ -92,7 +92,7 @@ class Detail extends Component {
             </CardItem>
             <CardItem>
               <Body>
-                <Text>Check In Image</Text>
+                <Text>Check In at: {moment(data.createdAt).format("LT")}</Text>
                 <TouchableHighlight
                   onPress={() => {
                     this.setModalVisible(!this.showAndHideImage, data.imgTrue);
@@ -104,7 +104,7 @@ class Detail extends Component {
                   />
                 </TouchableHighlight>
 
-                <Text>Check Out Image</Text>
+                <Text>Check Out at: {moment(data.updatedAt).format("LT")}</Text>
 
                 <TouchableHighlight
                   onPress={() => {
