@@ -44,7 +44,7 @@ class Home extends Component {
         <StatusBar hidden={true}/>
         
           <Item style={{ marginBottom: 10 }} picker>
-            <Text>Sort By : </Text>
+            <Text>Order By : </Text>
             <Picker
               mode="dropdown"
               iosIcon={<Icon name="ios-arrow-down-outline" />}
@@ -81,8 +81,9 @@ class Home extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: (
-        <View style={{marginLeft: 5, minWidth: 50}} >
-          <Image source={require('../icons/paogah.png')} style={{ width: 30, height: 30 }}/>
+        <View style={{flexDirection: 'row', alignItems: 'center'}} >
+          <Image source={require('../icons/paogah.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>
+          <Text style={styles.title}>PAOGA<Text style={{color: '#f04f10', fontWeight: 'bold', fontSize: 20}}>H</Text></Text>
         </View>
       ),
       headerRight: (
@@ -101,6 +102,10 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     margin: 15,
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20
   }
 })
 

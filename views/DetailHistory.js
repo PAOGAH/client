@@ -38,12 +38,15 @@ class Detail extends Component {
       urlImage: url
     });
   }
-  bayarWoi = (currentTime) => {
-    console.log('iniiii =>>', currentTime)
+  bayarWoi = (createdAt, updatedAt) => {
+    let checkIn = moment(createdAt)
+    let checkOut = moment(updatedAt)
+    let currentTime = checkIn.from(checkOut)
     let pay;
     if (
       currentTime == "1 hours ago" || 
       currentTime.split(' ').indexOf('minutes') != -1 ||
+      currentTime.split(' ').indexOf('minute') != -1 ||
       currentTime == "a few seconds ago"
       ) {
       pay = 'Rp. 3000,00'
@@ -115,7 +118,7 @@ class Detail extends Component {
                 </TouchableHighlight>
 
                 
-                <Text style={{marginTop: 10, fontSize: 25}}>Parking Fee: <Text style={{fontSize: 20}}>{this.bayarWoi(moment(data.createdAt).fromNow())}</Text></Text>
+                <Text style={{marginTop: 10, fontSize: 25}}>Parking Fee: <Text style={{fontSize: 20}}>{this.bayarWoi(data.createdAt, data.updatedAt)}</Text></Text>
               </Body>
             </CardItem>
           </Card>
