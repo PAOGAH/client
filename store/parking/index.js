@@ -4,7 +4,9 @@ let initialParking = {
   totalVehicle: 0,
   totalEmpty: 50,
   searchLicense: [],
-  loadingGetLicenses: false
+  loadingGetLicenses: false,
+  motor: [],
+  mobil: []
 }
 
 function parking(state = initialParking, action) {
@@ -16,7 +18,9 @@ function parking(state = initialParking, action) {
               allLisencesParking: action.payload.allLisencesParking,
               totalEmpty: action.payload.totalEmpty,
               totalVehicle: action.payload.totalVehicle,
-              loadingGetLicenses: false
+              loadingGetLicenses: false,
+              motor: action.payload.motor,
+              mobil: action.payload.mobil
           }
       case 'REQUEST_GET_ALL_LICENSES':
           return {
