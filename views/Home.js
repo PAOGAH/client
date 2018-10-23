@@ -44,7 +44,7 @@ class Home extends Component {
         <StatusBar hidden={true}/>
         
           <Item style={{ marginBottom: 10 }} picker>
-            <Text>Sort By : </Text>
+            <Text>Order By : </Text>
             <Picker
               mode="dropdown"
               iosIcon={<Icon name="ios-arrow-down-outline" />}
@@ -101,6 +101,10 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     margin: 15,
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20
   }
 })
 

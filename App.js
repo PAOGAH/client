@@ -86,17 +86,16 @@ const BottomNav = createBottomTabNavigator({
     tabBarIcon: ({ focused, horizontal, tintColor }) => {
       const { routeName } = navigation.state;
       if (routeName === 'Parking') {
-        return <Image source={require('./icons/parkIcon.png')} style={{ width: 25, height: 25}}/>
+        return <Image source={require('./icons/parkIcon.png')} style={{ width: 25, height: 25 }}/>
       } else if (routeName === 'Stats') {
-        return <Image source={require('./icons/statsIcon.png')} style={{ width: 25, height: 25}}/>
+        return <Image source={require('./icons/statsIcon.png')} style={{ width: 25, height: 25 }}/>
       } else if (routeName === 'History') {
-        return <Image source={require('./icons/historyIcon.png')} style={{ width: 25, height: 25}}/>
+        return <Image source={require('./icons/historyIcon.png')} style={{ width: 25, height: 25 }}/>
       }
     },
   }),
   tabBarOptions: {
-    activeTintColor: '#F1FAEE',
-    inactiveTintColor: 'rgba(194, 202, 214, 0.3)',
+    activeBackgroundColor: '#204170',
     showLabel: false,
     style: {
       backgroundColor: '#1D3557'
