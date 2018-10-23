@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 
 import store from '../store'
 import PieChart from '../components/PieChart'
+import VehicleStatistic from '../components/VehicleStatistic'
 
 class Statistic extends Component {
   constructor(props) {
@@ -15,9 +16,15 @@ class Statistic extends Component {
   render() {
     return (
       <Provider store={store}>
-        <ScrollView style={{ paddingVertical: 20 }}>
+      
+        <View>
+          <ScrollView>
+
+          
           <PieChart/>
-        </ScrollView>
+          <VehicleStatistic/>
+          </ScrollView>
+        </View>
       </Provider>
     );
   }

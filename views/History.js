@@ -55,6 +55,9 @@ export class Histories extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'History',
+      headerStyle: {
+        backgroundColor: '#1E90CF'
+      },
       headerRight: (
         <TouchableOpacity onPress={() => {
           navigation.navigate('Search')

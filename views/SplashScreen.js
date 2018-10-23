@@ -17,7 +17,7 @@ export class SpashScreen extends Component {
             />
         </View>
         <Text style={styles.title}>PAOGA<Text style={{color: '#f04f10'}}>H</Text></Text>
-        <Text style={styles.description}>Parking Automatic Gate Hacktiv</Text>
+        <Text style={styles.description}>Parking Automatic Gate Hacktiv8</Text>
       </View>
     )
   }
