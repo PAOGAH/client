@@ -81,8 +81,8 @@ class Home extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: (
-        <View style={{marginLeft: 5, minWidth: 50}} >
-          <Image source={require('../icons/paogah.png')} style={{ width: 30, height: 30 }}/>
+        <View style={{marginLeft: 5, minWidth: 100}} >
+          <Image source={require('../icons/paogahtopi.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>
         </View>
       ),
       headerRight: (
@@ -93,7 +93,7 @@ class Home extends Component {
               <Icon name='search'/>
           </View>
         </TouchableOpacity>
-      )
+      ),
     };
   };
 }

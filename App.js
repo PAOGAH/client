@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import { Platform, View, Image, Text, TouchableOpacity } from 'react-native';
+import { Platform, View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux'
 import { createBottomTabNavigator, createStackNavigator, NavigationActions } from 'react-navigation'
 import { Container, Header, Content, Icon, Button } from 'native-base';
@@ -53,7 +53,20 @@ export default class App extends Component {
 
 
 const HomeStack = createStackNavigator({
-  Home: Home,
+  Home: {
+    screen: Home,
+    navigationOptions: () => ({
+      headerTitle: (
+        <View style={{flexDirection: "row", justifyContent: "center", alignItems: "center"}}> 
+          <Image
+            source={require("./icons/paogahtopi.png")}
+            style={styles.image}
+          />
+          <Text style={styles.title}>PAOGA<Text style={{color: '#f04f10'}}>H</Text></Text>
+        </View>
+      ),
+    })
+  },
   Detail: Detail,
   Search: SearchView
 })
@@ -90,3 +103,24 @@ const BottomNav = createBottomTabNavigator({
     }
   }
 })
+
+const styles = StyleSheet.create({
+  image: {
+    width: 100,
+    height: 40,
+    resizeMode: "contain",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  nav: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "firebrick",
+    // justifyContent: "center"
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginRight: 5
+  },
+});

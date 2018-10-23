@@ -21,7 +21,8 @@ import {
   Icon,
   Left,
   Body,
-  Right
+  Right,
+  H3
 } from "native-base";
 import moment from "moment";
 
@@ -46,17 +47,17 @@ class Detail extends Component {
       currentTime.split(' ').indexOf('minute') != -1 ||
       currentTime == "a few seconds ago"
       ) {
-      pay = 'Rp. 3000,00'
+      pay = 'Rp 3.000,-'
     } else if (currentTime == "2 hours ago") {
-      pay = 'Rp. 4000,00'
+      pay = 'Rp 4.000,-'
     } else if (currentTime == "3 hours ago") {
-      pay = 'Rp. 5000,00'
+      pay = 'Rp 5.000,-'
     } else if (currentTime == "4 hours ago") {
-      pay = 'Rp. 6000,00'
+      pay = 'Rp 6.000,-'
     } else if (currentTime == "5 hours ago") {
-      pay = 'Rp. 7000,00'
+      pay = 'Rp 7.000,-'
     } else {
-      pay = 'Rp. 10000,00'
+      pay = 'Rp 10.000,-'
     }
 
     return pay
@@ -67,11 +68,11 @@ class Detail extends Component {
     return (
       <Fragment>
         <Content>
-          <Card style={{ flex: 1 }}>
+          <Card style={{ flex: 1, paddingBottom: 28 }}>
             <CardItem>
               <Left>
                 <Thumbnail
-                  source={require('../icons/paogah.png')}
+                  source={require('../icons/paogahtopi.png')}
                   style={{height: 35}}
                 />
                 <Body>
@@ -96,10 +97,15 @@ class Detail extends Component {
                 >
                   <Image
                     source={{ uri: data.imgTrue }}
-                    style={{ height: 150, width: 300, flex: 0}}
+                    style={{ height: 320, width: 320, flex: 0}}
                   />
                 </TouchableHighlight>
-                <Text style={{marginTop: 10, fontSize: 25}}>Parking Fee: <Text style={{fontSize: 20}}>{this.bayarWoi(moment(data.createdAt).fromNow())}</Text></Text>
+                <Button block style={{marginTop: 10, backgroundColor: "#EA5C2C"}}>
+                <H3 style={{fontSize: 20, marginLeft: 5, color: "white"}}>
+                  <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
+                  {this.bayarWoi(moment(data.createdAt).fromNow())}
+                </H3>
+                </Button>
               </Body>
             </CardItem>
           </Card>
@@ -111,46 +117,25 @@ class Detail extends Component {
             this.setModalVisible(!this.state.modalVisible);
           }}
         >
-          <ImageViewer
-            imageUrls={[
-              {
-                url: this.state.urlImage
-              }
-            ]}
-          />
+          <View style={{ width: '100%', height: 600}}>
+            <ImageViewer
+              imageUrls={[
+                {
+                  url: this.state.urlImage
+                }
+              ]}
+            />
+          </View>
         </Modal>
       </Fragment>
-      // <View style={styles.container}>
-      //   <View style={styles.row}>
-      //     <View style={styles.columnLeft}>
-      //       <Text>Lisence Plate  : {data.text}</Text>
-      //       <Text>CreatedAt : {data.createdAt.split('').slice(0,15).join('')}</Text>
-      //       {
-      //         data.updatedAt? <Text>UpdateAt : {data.updatedAt.split('').slice(0,15).join('')}</Text> : <Text>Check Out Time : -</Text>
-      //       }
-      //     </View>
-      //     <View style={styles.columnRight}>
-
-      //       <View style={{ width: '100%', height: '45%', marginBottom: 25}}>
-      //         <Text style={{fontWeight: 'bold'}}>Check In Image</Text>
-      // <TouchableHighlight onPress={() => { this.setModalVisible(!this.showAndHideImage, data.imgTrue) }}>
-      //           <Image
-      //             style={{width: '100%', height: '100%'}}
-      //             source={{ uri: data.imgTrue }}
-      //           />
-      // </TouchableHighlight>
-      //       </View>
-
-      //         <View View style={{ width: '100%', height: '45%'}}>
-      //           <Text style={{fontWeight: 'bold'}}>Check Out Image</Text>
-
-      //         </View>
-
-      //     </View>
-      //   </View>
-      // </View>
     );
   }
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'Details'
+    };
+  };
 }
 
 const styles = StyleSheet.create({
