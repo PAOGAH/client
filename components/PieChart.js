@@ -9,7 +9,12 @@ class PieChartComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
     };
+  }
+
+  componentWillReceiveProps = () => {
+
   }
 
   render() {
@@ -21,7 +26,7 @@ class PieChartComponent extends Component {
         <StatusBar hidden={true}/>
         <View>
           <View style={styles.container}>
-            <Text style={styles.title}> Information </Text>
+            <Text style={styles.title}> Total Parking Slot </Text>
             <View style={styles.row}>
               <Square background="#2196f3"/>
               <Text style={{ marginLeft: 10, marginRight: 10 }}>Empty, </Text>
@@ -30,11 +35,6 @@ class PieChartComponent extends Component {
             </View>
           </View>
 
-          {/* <PieChart
-            chart_wh={chart_wh}
-            series={series}
-            sliceColor={sliceColor}
-          /> */}
           <View style={styles.chart}>
             <PieChart
               chart_wh={chart_wh}
@@ -54,11 +54,15 @@ class PieChartComponent extends Component {
                 top: 105,
                 color: 'black',
               }}>Available slot {this.props.totalEmpty}</Text>
-
-
           </View>
         </View>
+        <View style={{
+          top: 280,
+        }}> 
+          <Text style={styles.title}>Vehicle Statistics</Text>
+        </View>
       </View>
+      
     );
   }
 }
