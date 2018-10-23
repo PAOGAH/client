@@ -37,8 +37,8 @@ export class VehicleStatistic extends Component {
           </View>
           <View style={{flexDirection: 'row'}}>
             <Text>
-              Car: {Math.round((this.props.mobil.length / this.props.allLisencesParking.length) * 100)}% {'\n'}
-              Motor Bike: {Math.round((this.props.motor.length / this.props.allLisencesParking.length) * 100)}%
+              Motor Bike: {Math.round((this.props.motor.length / this.props.allLisencesParking.length) * 100)}% {'\n'}
+              Car: {Math.round((this.props.mobil.length / this.props.allLisencesParking.length) * 100)}% 
             </Text>
           </View>
         </View>
