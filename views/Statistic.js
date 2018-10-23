@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 import { Provider } from 'react-redux'
 
 import store from '../store'
@@ -15,9 +15,9 @@ class Statistic extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Fragment>
+        <ScrollView style={{ paddingVertical: 20 }}>
           <PieChart/>
-        </Fragment>
+        </ScrollView>
       </Provider>
     );
   }

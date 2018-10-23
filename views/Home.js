@@ -81,8 +81,8 @@ class Home extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: (
-        <View style={{marginLeft: 5, minWidth: 50}} >
-          {/* <Image source={require('../icons/paogah.png')} style={{ width: 30, height: 30 }}/> */}
+        <View style={{flexDirection: 'row', alignItems: 'center'}} >
+          <Image source={require('../icons/paogah.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>
           <Text style={styles.title}>PAOGA<Text style={{color: '#f04f10', fontWeight: 'bold', fontSize: 20}}>H</Text></Text>
         </View>
       ),
