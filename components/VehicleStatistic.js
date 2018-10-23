@@ -9,7 +9,7 @@ export class VehicleStatistic extends Component {
   render() {
     // alert(JSON.stringify(this.props.mobil))
     const chart_wh = 150
-    const series = [this.props.mobil.length === 0 ? 1 : this.props.mobil.length, this.props.motor.length  === 0 ? 1 : this.props.motor.length]
+    const series = [this.props.mobil.length, this.props.motor.length]
     const sliceColor = ['#EA5C2C', '#F29222']
 
     /*
