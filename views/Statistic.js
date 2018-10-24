@@ -43,7 +43,7 @@ class Statistic extends Component {
               </Card>
               <Card style={{flex: 1}}>
                 <CardItem header bordered style={{backgroundColor: '#3F51B5'}}>
-                  <Text style={{color: 'white'}}>Vehicle Per Week</Text>
+                  <Text style={{color: 'white'}}>Vehicles Per Week</Text>
                 </CardItem>
                 <CardItem>
                   <Body>
