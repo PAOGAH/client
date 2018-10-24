@@ -162,6 +162,11 @@ class Detail extends Component {
       </Fragment>
     );
   }
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'Details'
+    };
+  };
 }
 
 const styles = StyleSheet.create({

@@ -6,7 +6,8 @@ let initialParking = {
   searchLicense: [],
   loadingGetLicenses: false,
   motor: [],
-  mobil: []
+  mobil: [],
+  dataPerWeek: []
 }
 
 function parking(state = initialParking, action) {
@@ -20,7 +21,8 @@ function parking(state = initialParking, action) {
               totalVehicle: action.payload.totalVehicle,
               loadingGetLicenses: false,
               motor: action.payload.motor,
-              mobil: action.payload.mobil
+              mobil: action.payload.mobil,
+              dataPerWeek: action.payload.dataMingguSekarang
           }
       case 'REQUEST_GET_ALL_LICENSES':
           return {

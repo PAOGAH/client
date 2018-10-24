@@ -6,7 +6,7 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
 import store from '../store'
 import PieChart from '../components/PieChart'
 import VehicleStatistic from '../components/VehicleStatistic'
-
+import BarChart from '../components/BarChart'
 class Statistic extends Component {
   constructor(props) {
     super(props);
@@ -41,13 +41,23 @@ class Statistic extends Component {
                   </Body>
                 </CardItem>
               </Card>
+              <Card style={{flex: 1}}>
+                <CardItem header bordered style={{backgroundColor: '#3F51B5'}}>
+                  <Text style={{color: 'white'}}>Vehicle Per Week</Text>
+                </CardItem>
+                <CardItem>
+                  <Body>
+                    <BarChart/>
+                  </Body>
+                </CardItem>
+              </Card>
             </View>
           </ScrollView>
         </View>
       </Provider>
     );
   }
-
+  // <BarChart/>
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: 'Statistic',

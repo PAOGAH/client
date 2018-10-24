@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import moment from 'moment'
 
 firebase.firestore().settings({
   timestampsInSnapshots: true
@@ -11,11 +12,15 @@ export default dispatch => {
     type: 'REQUEST_GET_ALL_LICENSES'
   })
   db.collection('licenses').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     let arr = []
     let totalSlotParking = 50
     let allPlatTrue = []
     let mobil = []
     let motor = []
+
+    let dataMingguSekarang =  []
+
     snapshot.forEach(doc => {
       let data = doc.data()
       let potong = data.imgTrue.split('_')
@@ -26,16 +31,24 @@ export default dispatch => {
         } else if (potong[potong.length-1] === 'motorbike.jpg') {
           motor.push(data)
         }
-        // alert(JSON.stringify(potong))
       } else {
         arr.push({
           id: doc.id,
           ...data
         })
+
+        // bulan yang sama dan minggu yang sama
+        if(moment(data.updatedAt).month() === new Date().getMonth() && moment(data.updatedAt).weekday() === moment(new Date).weekday()) {
+          // masuk++
+          dataMingguSekarang.push(data)
+        }
       }
     })
+    // alert(months[new Date().getMonth()])
+    // alert(moment(arr[0].createdAt).weekday())
+    // alert(moment(new Date).month())
     totalSlotParking -= allPlatTrue.length
-    // alert(JSON.stringify(mobil))
+    // alert(JSON.stringify(moment(arr[arr.length-1].createdAt).day()))
     dispatch({
       type: 'SUCCESS_GET_ALL_LISENCES',
       payload: {
@@ -44,7 +57,8 @@ export default dispatch => {
         totalEmpty: totalSlotParking,
         totalVehicle: allPlatTrue.length,
         motor,
-        mobil
+        mobil,
+        dataMingguSekarang
       }
     })
   })
