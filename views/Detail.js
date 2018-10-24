@@ -92,7 +92,7 @@ class Detail extends Component {
                 >
                   <Image
                     source={{ uri: data.imgTrue }}
-                    style={{ height: 320, width: 320, flex: 0, borderRadius: 8, marginVertical: 12}}
+                    style={{ height: 300, width: 320, flex: 0, borderRadius: 8, marginVertical: 12}}
                   />
                 </TouchableHighlight>
                 <Button block style={{marginTop: 10, backgroundColor: "#F27242"}}>

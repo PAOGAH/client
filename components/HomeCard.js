@@ -78,10 +78,11 @@ class HomeCard extends Component {
             </CardItem>
             <CardItem>
               <Left>
-                <ButtonNativeBase rounded primary>
-                  <TextNativeBase style={{ color: "white" }}>
-                    Parking Spot: {this.props.parkingSpot + 1}
+                <ButtonNativeBase rounded primary onPress={this.goToStack}>
+                  <TextNativeBase style={{ color: "white", paddingRight: 0, marginRight: 0 }}>
+                    Detail 
                   </TextNativeBase>
+                  <Icon name='arrow-forward' />
                 </ButtonNativeBase>
               </Left>
               <Right>

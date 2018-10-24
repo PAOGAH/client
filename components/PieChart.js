@@ -26,9 +26,9 @@ class PieChartComponent extends Component {
       <View style={styles.container}>
           <View style={styles.row}>
             <Square background="#2196f3"/>
-            <Text style={{ marginLeft: 10, marginRight: 10 }}>Empty, </Text>
+            <Text style={{ marginLeft: 10, marginRight: 10 }}>Empty</Text>
             <Square background="#4CAF50"/>
-            <Text style={{ marginLeft: 10, marginRight: 10 }}>Fill</Text>
+            <Text style={{ marginLeft: 10, marginRight: 10 }}>Filled</Text>
           </View>
 
         <View style={[styles.chart, { marginBottom: 10 }]}>
@@ -45,12 +45,12 @@ class PieChartComponent extends Component {
           />
           <Text
           style={{
-            fontSize: 25,
+            fontSize: 22,
             position: 'absolute',
             zIndex: 9,
             top: 110,
             color: 'black',
-          }}>Available slot {this.props.totalEmpty}</Text>
+          }}>Available Slot: {this.props.totalEmpty}</Text>
         </View>
       </View>
     );
