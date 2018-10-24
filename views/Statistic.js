@@ -19,10 +19,8 @@ class Statistic extends Component {
       
         <View>
           <ScrollView>
-
-          
-          <PieChart/>
-          <VehicleStatistic/>
+            <PieChart/>
+            <VehicleStatistic/>
           </ScrollView>
         </View>
       </Provider>

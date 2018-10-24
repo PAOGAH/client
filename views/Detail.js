@@ -6,22 +6,16 @@ import {
   Image,
   Modal,
   TouchableHighlight,
-  Alert
 } from "react-native";
 import ImageViewer from "react-native-image-zoom-viewer";
 import {
-  Container,
-  Header,
   Content,
   Card,
   CardItem,
   Thumbnail,
-  Text as TextNativeBase,
   Button,
-  Icon,
   Left,
   Body,
-  Right,
   H3
 } from "native-base";
 import moment from "moment";
@@ -101,10 +95,10 @@ class Detail extends Component {
                   />
                 </TouchableHighlight>
                 <Button block style={{marginTop: 10, backgroundColor: "#EA5C2C"}}>
-                <H3 style={{fontSize: 20, marginLeft: 5, color: "white"}}>
-                  <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
-                  {this.bayarWoi(moment(data.createdAt).fromNow())}
-                </H3>
+                  <H3 style={{fontSize: 20, marginLeft: 5, color: "white"}}>
+                    <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
+                    {this.bayarWoi(moment(data.createdAt).fromNow())}
+                  </H3>
                 </Button>
               </Body>
             </CardItem>
@@ -117,7 +111,7 @@ class Detail extends Component {
             this.setModalVisible(!this.state.modalVisible);
           }}
         >
-          <View style={{ width: '100%', height: 600}}>
+          <View style={{ width: '100%', height: '110%'}}>
             <ImageViewer
               imageUrls={[
                 {

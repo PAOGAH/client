@@ -21,7 +21,8 @@ import {
   Icon,
   Left,
   Body,
-  Right
+  Right,
+  H3
 } from "native-base";
 import moment from "moment";
 
@@ -44,7 +45,7 @@ class Detail extends Component {
     let currentTime = checkIn.from(checkOut)
     let pay;
     if (
-      currentTime == "1 hours ago" || 
+      currentTime == "an hour ago" || 
       currentTime.split(' ').indexOf('minutes') != -1 ||
       currentTime.split(' ').indexOf('minute') != -1 ||
       currentTime == "a few seconds ago"
@@ -116,9 +117,14 @@ class Detail extends Component {
                     style={{ height: 150, width: 300}}
                   />
                 </TouchableHighlight>
-
                 
-                <Text style={{marginTop: 10, fontSize: 25}}>Parking Fee: <Text style={{fontSize: 20}}>{this.bayarWoi(data.createdAt, data.updatedAt)}</Text></Text>
+                <Button block style={{marginTop: 10, backgroundColor: "#EA5C2C"}}>
+                  <H3 style={{fontSize: 20, marginLeft: 5, color: "white"}}>
+                    <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
+                    {this.bayarWoi(moment(data.createdAt).fromNow())}
+                  </H3>
+                </Button>
+
               </Body>
             </CardItem>
           </Card>
@@ -130,16 +136,18 @@ class Detail extends Component {
             this.setModalVisible(!this.state.modalVisible);
           }}
         >
-          <ImageViewer
-            imageUrls={[
-              {
-                url: data.imgTrue
-              },
-              {
-                url: data.imgFalse
-              }
-            ]}
-          />
+          <View style={{ width: '100%', height: '110%' }}>
+            <ImageViewer 
+              imageUrls={[
+                {
+                  url: data.imgTrue
+                },
+                {
+                  url: data.imgFalse
+                }
+              ]}
+            />
+          </View>
         </Modal>
       </Fragment>
     );

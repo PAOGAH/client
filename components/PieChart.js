@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { AppRegistry, StyleSheet, ScrollView , StatusBar, Text, View, Alert } from 'react-native';
+import { Header } from 'native-base'
 import PieChart from 'react-native-pie-chart'
 import { connect } from 'react-redux'
 
@@ -24,6 +25,7 @@ class PieChartComponent extends Component {
     return (
       <View>
         <StatusBar hidden={true}/>
+        <Header/>
         <View style={styles.container}>
           <Text style={styles.title}> Total Parking Slot </Text>
           <View style={styles.row}>
@@ -46,14 +48,14 @@ class PieChartComponent extends Component {
               zIndex: 8
             }}
           />
-            <Text 
-            style={{
-              fontSize: 25, 
-              position: 'absolute',
-              zIndex: 9,
-              top: 105,
-              color: 'black',
-            }}>Available slot {this.props.totalEmpty}</Text>
+          <Text 
+          style={{
+            fontSize: 25, 
+            position: 'absolute',
+            zIndex: 9,
+            top: 105,
+            color: 'black',
+          }}>Available slot {this.props.totalEmpty}</Text>
         </View>
       </View>
     );
