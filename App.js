@@ -90,19 +90,21 @@ const BottomNav = createBottomTabNavigator({
     tabBarIcon: ({ focused, horizontal, tintColor }) => {
       const { routeName } = navigation.state;
       if (routeName === 'Parking') {
-        return <Image source={require('./icons/parkIcon.png')} style={{ width: 25, height: 25 }}/>
+        return <Image source={require('./icons/parkIcon.png')} style={{ width: 22, height: 22 }}/>
       } else if (routeName === 'Stats') {
-        return <Image source={require('./icons/statsIcon.png')} style={{ width: 25, height: 25 }}/>
+        return <Image source={require('./icons/statsIcon.png')} style={{ width: 22, height: 22 }}/>
       } else if (routeName === 'History') {
-        return <Image source={require('./icons/historyIcon.png')} style={{ width: 25, height: 25 }}/>
+        return <Image source={require('./icons/historyIcon.png')} style={{ width: 22, height: 22 }}/>
       }
     },
   }),
   tabBarOptions: {
     showLabel: true,
-    activeTintColor: '#4d4d4d',
+    activeTintColor: '#f2f2f2',
+    activeBackgroundColor: '#005299',
+    inactiveTintColor: '#ccc',
     style: {
-      backgroundColor: '#F9F9F9'
+      backgroundColor: '#003b6f'
     }
   }
 })

@@ -151,7 +151,7 @@ class Bar extends React.Component {
                           y={labelDistance}
                           x={-12}
                           fill={colours.black}
-                          font="18px helvetica"
+                          font="14px helvetica"
                         >
                           {d.letter}
                         </Text>
@@ -169,7 +169,7 @@ class Bar extends React.Component {
                             fill={colours.black}
                             x={-20}
                             y={-labelDistance}
-                            font="18px helvetica"
+                            font="14px helvetica"
                           >
                             {d + emptySpace}
                           </Text>
