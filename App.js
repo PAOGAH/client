@@ -77,9 +77,13 @@ const HistoryStack = createStackNavigator({
   Search: SearchViewHistory
 })
 
+const StatsStack = createStackNavigator({
+  Stats: Statistic
+})
+
 const BottomNav = createBottomTabNavigator({
   Parking: HomeStack,
-  Stats: Statistic,
+  Stats: StatsStack,
   History: HistoryStack
 }, {
   navigationOptions: ({ navigation }) => ({
@@ -95,10 +99,10 @@ const BottomNav = createBottomTabNavigator({
     },
   }),
   tabBarOptions: {
-    activeBackgroundColor: '#204170',
-    showLabel: false,
+    showLabel: true,
+    activeTintColor: '#4d4d4d',
     style: {
-      backgroundColor: '#1D3557'
+      backgroundColor: '#F9F9F9'
     }
   }
 })

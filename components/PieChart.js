@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { AppRegistry, StyleSheet, ScrollView , StatusBar, Text, View, Alert } from 'react-native';
+import { Header, Body, Title, Content } from 'native-base'
 import PieChart from 'react-native-pie-chart'
 import { connect } from 'react-redux'
 
@@ -34,7 +35,7 @@ class PieChartComponent extends Component {
           </View>
         </View>
 
-        <View style={styles.chart}>
+        <View style={[styles.chart, { marginBottom: 10 }]}>
           <PieChart
             chart_wh={chart_wh}
             series={series}
@@ -46,14 +47,14 @@ class PieChartComponent extends Component {
               zIndex: 8
             }}
           />
-            <Text 
-            style={{
-              fontSize: 25, 
-              position: 'absolute',
-              zIndex: 9,
-              top: 105,
-              color: 'black',
-            }}>Available slot {this.props.totalEmpty}</Text>
+          <Text 
+          style={{
+            fontSize: 25, 
+            position: 'absolute',
+            zIndex: 9,
+            top: 105,
+            color: 'black',
+          }}>Available slot {this.props.totalEmpty}</Text>
         </View>
       </View>
     );
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     paddingBottom: 10,
+    marginBottom: 20
   },
   column: {
     flexDirection: 'column',

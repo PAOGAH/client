@@ -17,17 +17,24 @@ class Statistic extends Component {
     return (
       <Provider store={store}>
       
-        <View>
+        <View style={{ backgroundColor: '#fff' }}>
           <ScrollView>
-
-          
-          <PieChart/>
-          <VehicleStatistic/>
+            <PieChart/>
+            <VehicleStatistic/>
           </ScrollView>
         </View>
       </Provider>
     );
   }
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'Statistic',
+      headerTitleStyle: {
+        color: '#404040'
+      }
+    };
+  };
 }
 
 export default Statistic;

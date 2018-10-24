@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Container, Header, Content, Card as CardNativeBase, CardItem, Body, Text as TextNativeBase } from 'native-base';
 
 class Card extends Component {
@@ -15,12 +15,12 @@ class Card extends Component {
 
   render() {
     return (
-      <TouchableHighlight onPress={this.goToStack}>
+      <TouchableOpacity onPress={this.goToStack}>
         <CardNativeBase>
           <CardItem>
             <Body style={styles.card}>
             <View>
-                  <Text>{this.props.data.text}</Text>
+                  <Text style={{ fontWeight: '600', fontSize: 16 }}>{this.props.data.text}</Text>
               </View>
               <View>
                   <Text>{this.props.data.createdAt.split('').slice(0,15).join('')}</Text>
@@ -28,7 +28,7 @@ class Card extends Component {
             </Body>
           </CardItem>
         </CardNativeBase>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }
