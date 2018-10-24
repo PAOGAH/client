@@ -8,7 +8,7 @@ import Square from './Square'
 export class VehicleStatistic extends Component {
   render() {
     // alert(JSON.stringify(this.props.mobil))
-    const chart_wh = 150
+    const chart_wh = 120
     const series = [this.props.mobil.length, this.props.motor.length]
     const sliceColor = ['#EA5C2C', '#F29222']
 
@@ -19,32 +19,27 @@ export class VehicleStatistic extends Component {
     */
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Vehicle Statistics</Text>
         <View style={styles.row}>
-          
-        <PieChart
-          chart_wh={chart_wh}
-          series={series}
-          sliceColor={sliceColor}
-          coverRadius={0.8}
-        />
-        <View style={{flexDirection: 'column', marginLeft: 10, marginTop: 10}}>
-          <View style={{flexDirection: 'row', marginBottom: 5}}>
-            <Square background="#F29222"/>
-            <Text style={{ marginLeft: 10, marginRight: 10 }}>Motor Bike</Text>
-            <Square background="#EA5C2C"/>
-            <Text style={{ marginLeft: 10, marginRight: 10 }}>Car</Text>
+          <View style={{flexDirection: 'column', marginRight: 10, marginTop: 20}}>
+            <Text style={{fontSize: 28, textAlign: 'center'}}>{Math.round((this.props.motor.length / this.props.allLisencesParking.length) * 100)}% {'\n'}</Text>
+            <View style={{flexDirection: 'row'}}>
+              <Square background="#F29222"/>
+              <Text style={{marginLeft: 5}}>Motorbike</Text>
+            </View>
           </View>
-          <View style={{flexDirection: 'row'}}>
-            <Text>
-              Motor Bike: {Math.round((this.props.motor.length / this.props.allLisencesParking.length) * 100)}% {'\n'}
-              Car: {Math.round((this.props.mobil.length / this.props.allLisencesParking.length) * 100)}% 
-            </Text>
+          <PieChart
+            chart_wh={chart_wh}
+            series={series}
+            sliceColor={sliceColor}
+            coverRadius={0.8}
+          />
+          <View style={{flexDirection: 'column', marginLeft: 10, marginTop: 20}}>
+            <Text style={{fontSize: 28, textAlign: 'center'}}>{Math.round((this.props.mobil.length / this.props.allLisencesParking.length) * 100)}%</Text>
+            <View style={{flexDirection: 'row', marginTop: 5}}>
+              <Square background="#EA5C2C"/>
+              <Text style={{marginLeft: 5}}>Car</Text>
+            </View>
           </View>
-        </View>
-        
-        
-          
         </View>
       </View>
     )
@@ -58,11 +53,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   container: {
-    alignItems: 'center',
-    marginTop: 280
+    flex: 1,
+    alignItems: 'center'
   },
   row: {
-    margin: 10,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between'

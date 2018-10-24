@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, ScrollView, StatusBar } from 'react-native';
 import { Provider } from 'react-redux'
+import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-base';
 
 import store from '../store'
 import PieChart from '../components/PieChart'
@@ -16,11 +17,31 @@ class Statistic extends Component {
   render() {
     return (
       <Provider store={store}>
-      
-        <View style={{ backgroundColor: '#fff' }}>
+        <View style={{ backgroundColor: '#fff'}}>
+          <StatusBar hidden={true}/>
           <ScrollView>
-            <PieChart/>
-            <VehicleStatistic/>
+            <View style={{margin: 15}}>
+              <Card>
+                <CardItem header bordered style={{backgroundColor: '#3F51B5'}}>
+                  <Text style={{color: 'white'}}>Total Parking Space</Text>
+                </CardItem>
+                <CardItem>
+                  <Body>
+                    <PieChart/>
+                  </Body>
+                </CardItem>
+              </Card>
+              <Card>
+                <CardItem header bordered style={{backgroundColor: '#3F51B5'}}>
+                  <Text style={{color: 'white'}}>Vehicle Statistics</Text>
+                </CardItem>
+                <CardItem>
+                  <Body>
+                    <VehicleStatistic/>
+                  </Body>
+                </CardItem>
+              </Card>
+            </View>
           </ScrollView>
         </View>
       </Provider>
