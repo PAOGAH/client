@@ -23,17 +23,13 @@ class PieChartComponent extends Component {
     const series = [this.props.totalEmpty, this.props.totalVehicle]
     const sliceColor = ['#2196F3', '#4CAF50']
     return (
-      <View>
-        <StatusBar hidden={true}/>
-        <View style={styles.container}>
-          <Text style={styles.title}> Total Parking Slot </Text>
+      <View style={styles.container}>
           <View style={styles.row}>
             <Square background="#2196f3"/>
             <Text style={{ marginLeft: 10, marginRight: 10 }}>Empty, </Text>
             <Square background="#4CAF50"/>
             <Text style={{ marginLeft: 10, marginRight: 10 }}>Fill</Text>
           </View>
-        </View>
 
         <View style={[styles.chart, { marginBottom: 10 }]}>
           <PieChart
@@ -43,16 +39,16 @@ class PieChartComponent extends Component {
             doughnut={true}
             coverRadius={0.8}
             style={{
-              position: 'absolute',
+              //position: 'absolute',
               zIndex: 8
             }}
           />
-          <Text 
+          <Text
           style={{
-            fontSize: 25, 
+            fontSize: 25,
             position: 'absolute',
             zIndex: 9,
-            top: 105,
+            top: 110,
             color: 'black',
           }}>Available slot {this.props.totalEmpty}</Text>
         </View>
@@ -64,6 +60,7 @@ class PieChartComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    alignSelf: 'center'
   },
   title: {
     fontSize: 30,
@@ -73,7 +70,8 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     paddingBottom: 10,
-    marginBottom: 20
+    marginBottom: 20,
+    alignItems: 'center'
   },
   column: {
     flexDirection: 'column',
@@ -82,7 +80,7 @@ const styles = StyleSheet.create({
   chart: {
     position: 'relative',
     alignItems: 'center',
-    
+
   }
 })
 
