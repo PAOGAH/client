@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { AppRegistry, StyleSheet, ScrollView , StatusBar, Text, View, Alert } from 'react-native';
-import { Header } from 'native-base'
+import { Header, Body, Title, Content } from 'native-base'
 import PieChart from 'react-native-pie-chart'
 import { connect } from 'react-redux'
 
@@ -25,7 +25,6 @@ class PieChartComponent extends Component {
     return (
       <View>
         <StatusBar hidden={true}/>
-        <Header/>
         <View style={styles.container}>
           <Text style={styles.title}> Total Parking Slot </Text>
           <View style={styles.row}>
@@ -36,7 +35,7 @@ class PieChartComponent extends Component {
           </View>
         </View>
 
-        <View style={styles.chart}>
+        <View style={[styles.chart, { marginBottom: 10 }]}>
           <PieChart
             chart_wh={chart_wh}
             series={series}
@@ -74,6 +73,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     paddingBottom: 10,
+    marginBottom: 20
   },
   column: {
     flexDirection: 'column',

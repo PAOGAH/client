@@ -91,37 +91,47 @@ class Detail extends Component {
                 </Body>
               </Left>
             </CardItem>
+            <View style={{ width: '100%', height: 1, backgroundColor: '#b3b3b3' }} />
             <CardItem>
               <Body>
-                <Text>Check In at: {moment(data.createdAt).format("LT")}</Text>
-                <TouchableHighlight
-                  onPress={() => {
-                    this.setModalVisible(!this.showAndHideImage, data.imgTrue);
-                  }}
-                >
-                  <Image
-                    source={{ uri: data.imgTrue }}
-                    style={{ height: 150, width: 300, flex: 0}}
-                  />
-                </TouchableHighlight>
+                <Text style={styles.textBody}><Text style={{ fontWeight: '500', color: '#666666' }}>CHECK IN</Text> at: {moment(data.createdAt).format("LT")}</Text>
+                <View style={{ alignItems: 'center' }}>
+                  <TouchableHighlight
+                    onPress={() => {
+                      this.setModalVisible(!this.showAndHideImage, data.imgTrue);
+                    }}
+                  >
+                    <Image
+                      source={{ uri: data.imgTrue }}
+                      style={{ height: 200, width: 320, flex: 0, borderRadius: 8}}
+                    />
+                  </TouchableHighlight>
+                </View>
 
-                <Text>Check Out at: {moment(data.updatedAt).format("LT")}</Text>
-
-                <TouchableHighlight
-                  onPress={() => {
-                    this.setModalVisible(!this.showAndHideImage, data.imgFalse);
-                  }}
-                >
-                  <Image
-                    source={{ uri: data.imgFalse }}
-                    style={{ height: 150, width: 300}}
-                  />
-                </TouchableHighlight>
+                {
+                  data.imgFalse && (
+                    <Fragment>
+                      <Text style={[styles.textBody, { marginTop: 8 }]}><Text style={{ fontWeight: '500', color: '#666666' }}>CHECK OUT</Text> at: {moment(data.updatedAt).format("LT")}</Text>
+                      <View style={{alignItems: 'center'}}>
+                        <TouchableHighlight
+                          onPress={() => {
+                            this.setModalVisible(!this.showAndHideImage, data.imgFalse);
+                          }}
+                        >
+                          <Image
+                            source={{ uri: data.imgFalse }}
+                            style={{ height: 200, width: 320, flex: 0, borderRadius: 8 }}
+                          />
+                        </TouchableHighlight>
+                      </View>
+                    </Fragment>
+                  )
+                }
                 
-                <Button block style={{marginTop: 10, backgroundColor: "#EA5C2C"}}>
+                <Button block style={{marginTop: 20, backgroundColor: "#F27242"}}>
                   <H3 style={{fontSize: 20, marginLeft: 5, color: "white"}}>
                     <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
-                    {this.bayarWoi(moment(data.createdAt).fromNow())}
+                    {this.bayarWoi(data.createdAt, data.updatedAt)}
                   </H3>
                 </Button>
 
@@ -133,7 +143,7 @@ class Detail extends Component {
           transparent={true}
           visible={this.state.modalVisible}
           onRequestClose={() => {
-            this.setModalVisible(!this.state.modalVisible);
+            this.setModalVisible(false);
           }}
         >
           <View style={{ width: '100%', height: '110%' }}>
@@ -155,7 +165,11 @@ class Detail extends Component {
 }
 
 const styles = StyleSheet.create({
-
+  textBody: {
+    fontSize: 18,
+    textAlign: 'left',
+    paddingVertical: 15
+  }
 });
 
 export default Detail;

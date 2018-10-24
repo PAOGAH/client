@@ -82,6 +82,7 @@ class Detail extends Component {
                 </Body>
               </Left>
             </CardItem>
+            <View style={{ width: '100%', height: 1, backgroundColor: '#b3b3b3' }} />
             <CardItem>
               <Body>
                 <TouchableHighlight
@@ -91,10 +92,10 @@ class Detail extends Component {
                 >
                   <Image
                     source={{ uri: data.imgTrue }}
-                    style={{ height: 320, width: 320, flex: 0}}
+                    style={{ height: 320, width: 320, flex: 0, borderRadius: 8, marginVertical: 12}}
                   />
                 </TouchableHighlight>
-                <Button block style={{marginTop: 10, backgroundColor: "#EA5C2C"}}>
+                <Button block style={{marginTop: 10, backgroundColor: "#F27242"}}>
                   <H3 style={{fontSize: 20, marginLeft: 5, color: "white"}}>
                     <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
                     {this.bayarWoi(moment(data.createdAt).fromNow())}

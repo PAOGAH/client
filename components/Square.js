@@ -15,7 +15,8 @@ class Square extends Component {
             style={{
                 backgroundColor: this.props.background,
                 width: 20,
-                height: 20
+                height: 20,
+                borderRadius: 10
             }}
         />
       </View>

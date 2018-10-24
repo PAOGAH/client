@@ -56,7 +56,10 @@ export class Histories extends Component {
     return {
       title: 'History',
       headerStyle: {
-        backgroundColor: '#1E90CF'
+        backgroundColor: '#fff',
+        headerTitleStyle: {
+          color: '#404040'
+        }
       },
       headerRight: (
         <TouchableOpacity onPress={() => {

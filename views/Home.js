@@ -81,7 +81,7 @@ class Home extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerStyle: {
-        backgroundColor: '#1E90CF'
+        backgroundColor: '#fff'
       },
       headerTitle: (
         <View style={{marginLeft: 5, minWidth: 100}} >
