@@ -35,8 +35,8 @@ class HomeCard extends Component {
   };
 
   vehicleType = (type) => {
-    let split = type.split('_')[4]
-    if (split == 'car.jpg') {
+    let split = type.split('_')
+    if (split.indexOf('car.jpg') != -1) {
       return true
     } else {
       return false

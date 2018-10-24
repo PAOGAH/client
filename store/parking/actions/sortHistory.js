@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-export default val => {
+export default (val) => {
   return dispatch => {
     firebase.firestore()
       .collection('licenses')
