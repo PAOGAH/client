@@ -18,7 +18,7 @@ export default (val) => {
           let tmp = arr[i]
           if(val === 'asc') {
             if(i + 1 <= arr.length-1) {
-              if(arr[i].updatedAt > arr[i+1].updatedAt) {
+              if(new Date(arr[i].updatedAt) > new Date(arr[i+1].updatedAt)) {
                 arr[i] = arr[i+1]
                 arr[i+1] = tmp
                 i=-1
@@ -26,7 +26,7 @@ export default (val) => {
             }
           } else if(val === 'desc') {
             if(i + 1 <= arr.length-1) {
-              if(arr[i].updatedAt < arr[i+1].updatedAt) {
+              if(new Date(arr[i].updatedAt) < new Date(arr[i+1].updatedAt)) {
                 arr[i] = arr[i+1]
                 arr[i+1] = tmp
                 i=-1

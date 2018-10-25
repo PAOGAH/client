@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Container, Header, Content, Card as CardNativeBase, CardItem, Body, Text as TextNativeBase } from 'native-base';
+import moment from 'moment'
 
 class Card extends Component {
   constructor(props) {
@@ -13,6 +14,10 @@ class Card extends Component {
     this.props.navigation.navigate('Detail', { data: this.props.data })
   }
 
+  formatTimeToID = time => {
+    let indoTime = time._d;
+    return moment(indoTime).calendar();
+  };
   render() {
     return (
       <TouchableOpacity onPress={this.goToStack}>
@@ -23,7 +28,7 @@ class Card extends Component {
                   <Text style={{ fontWeight: '600', fontSize: 16 }}>{this.props.data.text}</Text>
               </View>
               <View>
-                  <Text>{this.props.data.createdAt.split('').slice(0,15).join('')}</Text>
+                  <Text>{`${this.props.data.updatedAt}`.split('').slice(0,15).join('')}</Text>
               </View>
             </Body>
           </CardItem>

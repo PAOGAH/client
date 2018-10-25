@@ -19,6 +19,11 @@ export class Histories extends Component {
     })
     this.props.sortHistory(val)
   }
+  componentWillMount = () => {
+    setTimeout(() => {
+      this.props.sortHistory('desc')      
+    }, 500);
+  }
 
   render() {
     return (

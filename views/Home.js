@@ -25,6 +25,9 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.props.getAllVehicle()
+    setTimeout(() => {
+      this.props.sortParking('desc')
+    }, 500);
   }
 
 

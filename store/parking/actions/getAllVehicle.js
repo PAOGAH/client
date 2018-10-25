@@ -11,8 +11,7 @@ export default dispatch => {
   dispatch({
     type: 'REQUEST_GET_ALL_LICENSES'
   })
-  db.collection('licenses').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
-    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  db.collection('licenses').onSnapshot(snapshot => {
     let arr = []
     let totalSlotParking = 50
     let allPlatTrue = []
