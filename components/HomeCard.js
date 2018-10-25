@@ -68,12 +68,12 @@ class HomeCard extends Component {
                     {this.props.data.text}
                   </Text>
                   <Text note>
-                    {this.formatTimeToID(moment(this.props.data.createdAt))}
+                    {this.formatTimeToID(moment(this.props.data.createdAt))}{/*  <Icon style={{color: 'black', fontSize: 40}} name='bicycle'/> */}
                   </Text>
                 </Body>
               </Left>
               <Right>
-                {this.vehicleType(this.props.data.imgTrue) ? <Icon style={{color: 'black', fontSize: 40}} name='car'/> : <Icon style={{color: 'black', fontSize: 40}} name='bicycle'/>}
+                {this.vehicleType(this.props.data.imgTrue) ? <Icon style={{color: 'black', fontSize: 40}} name='car'/> : <Image source={require('../icons/iconMotor.png')} style={{width: 40, height: 40}}/> }
               </Right>
             </CardItem>
             <CardItem>
