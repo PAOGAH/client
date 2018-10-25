@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, FlatList, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
-import { Picker, Item, Icon } from 'native-base';
+import { Picker, Item, Icon, Text } from 'native-base';
 import { connect } from 'react-redux'
 
 import Card from '../components/Card'
@@ -26,6 +26,7 @@ export class Histories extends Component {
       <View style={styles.container}>
 
         <Item style={{ marginBottom: 10 }} picker>
+          <Text>Order By : </Text>
           <Picker
             mode="dropdown"
             iosIcon={<Icon name="ios-arrow-down-outline" />}
