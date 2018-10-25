@@ -129,8 +129,8 @@ class Detail extends Component {
                 }
                 
                 <Button block style={{marginTop: 20, backgroundColor: "#F27242"}}>
+                  <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
                   <H3 style={{fontSize: 20, marginLeft: 5, color: "white"}}>
-                    <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
                     {this.bayarWoi(data.createdAt, data.updatedAt)}
                   </H3>
                 </Button>

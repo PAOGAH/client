@@ -25,11 +25,20 @@ export default dispatch => {
       let data = doc.data()
       let potong = data.imgTrue.split('_')
       if(data.status) {
-        allPlatTrue.push(data)
+        allPlatTrue.push({
+          id: doc.id,
+          ...data
+        })
         if(potong[potong.length-1] === 'car.jpg'){
-          mobil.push(data)
+          mobil.push({
+            id: doc.id,
+            ...data
+          })
         } else if (potong[potong.length-1] === 'motorbike.jpg') {
-          motor.push(data)
+          motor.push({
+            id: doc.id,
+            ...data
+          })
         }
       } else {
         arr.push({
@@ -40,7 +49,10 @@ export default dispatch => {
         // bulan yang sama dan minggu yang sama
         if(moment(data.updatedAt).month() === new Date().getMonth() && moment(data.updatedAt).week() === moment(new Date).week()) {
           // masuk++
-          dataMingguSekarang.push(data)
+          dataMingguSekarang.push({
+            id: doc.id,
+            ...data
+          })
         }
       }
     })

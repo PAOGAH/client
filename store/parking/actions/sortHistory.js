@@ -5,8 +5,7 @@ export default (val) => {
       .collection('licenses')
       .where('status', '==', false)
       .orderBy('updatedAt', val)
-      .get()
-      .then(snapshot => {
+      .onSnapshot(snapshot => {
         let arr = []
         snapshot.forEach(doc => {
           arr.push({
@@ -39,9 +38,6 @@ export default (val) => {
           type: 'GET_SORTING_HISTORY_DATA',
           payload: arr
         })
-      })
-      .catch(err => {
-        console.log(err)
       })
   }
 }

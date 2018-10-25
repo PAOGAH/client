@@ -96,8 +96,8 @@ class Detail extends Component {
                   />
                 </TouchableHighlight>
                 <Button block style={{marginTop: 10, backgroundColor: "#F27242"}}>
+                  <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
                   <H3 style={{fontSize: 20, marginLeft: 5, color: "white"}}>
-                    <Image source={require('../icons/money-flat2.png')} style={{width: 40, height: 40}}/>
                     {this.bayarWoi(moment(data.createdAt).fromNow())}
                   </H3>
                 </Button>
