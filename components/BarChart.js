@@ -75,18 +75,18 @@ class Bar extends React.Component {
   render() {
     let days = ['Mon', 'Tue', 'Wed', 'Thu',  'Fri', 'Sat', 'Sun']
     let data = [
+      {frequency: 0, letter: 'Sun'},
       {frequency: 0, letter: 'Mon'},
       {frequency: 0, letter: 'Tue'},
       {frequency: 0, letter: 'Wed'},
       {frequency: 0, letter: 'Thu'},
       {frequency: 0, letter: 'Fri'},
       {frequency: 0, letter: 'Sat'},
-      {frequency: 0, letter: 'Sun'}
     ];
 
     this.props.dataPerWeek.forEach(vehicle => {
       for(let i = 0; i < data.length ; i++) {
-        if(moment(vehicle.createdAt).day()-1 === i) {
+        if(moment(vehicle.createdAt).day() === i) {
           data[i].frequency+=1
         }
       }
