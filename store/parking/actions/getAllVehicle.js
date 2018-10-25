@@ -38,17 +38,13 @@ export default dispatch => {
         })
 
         // bulan yang sama dan minggu yang sama
-        if(moment(data.updatedAt).month() === new Date().getMonth() && moment(data.updatedAt).weekday() === moment(new Date).weekday()) {
+        if(moment(data.updatedAt).month() === new Date().getMonth() && moment(data.updatedAt).week() === moment(new Date).week()) {
           // masuk++
           dataMingguSekarang.push(data)
         }
       }
     })
-    // alert(months[new Date().getMonth()])
-    // alert(moment(arr[0].createdAt).weekday())
-    // alert(moment(new Date).month())
     totalSlotParking -= allPlatTrue.length
-    // alert(JSON.stringify(moment(arr[arr.length-1].createdAt).day()))
     dispatch({
       type: 'SUCCESS_GET_ALL_LISENCES',
       payload: {

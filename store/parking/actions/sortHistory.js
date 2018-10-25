@@ -4,7 +4,7 @@ export default (val) => {
     firebase.firestore()
       .collection('licenses')
       .where('status', '==', false)
-      .orderBy('createdAt', val)
+      .orderBy('updatedAt', val)
       .get()
       .then(snapshot => {
         let arr = []
@@ -15,7 +15,6 @@ export default (val) => {
           type: 'GET_SORTING_HISTORY_DATA',
           payload: arr
         })
-        // alert(JSON.stringify(arr))
       })
       .catch(err => {
         console.log(err)
